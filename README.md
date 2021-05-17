@@ -23,7 +23,7 @@ In order to facilitate system evaluations, we delete the XML tags and save the c
 ### Bible
 The **Bible** corpus is located in [corpus/bible](./corpus/bible)
 
-The directory makeup is similar to MAC, except that there is no *intertext* directory for manual alignments.
+The directory makeup is similar to MAC-Test, except that there is no *intertext* directory for manual alignments.
 
 The gold alignments for the Bible corpus are generated automatically from the original verse-aligned Bible corpus and saved in [eval/bible/gold](./eval/bible/gold)
 
