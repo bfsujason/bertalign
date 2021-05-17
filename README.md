@@ -132,7 +132,7 @@ perl utils/eval_bible.pl --meta corpus/bible/meta_data.tsv --gold eval/bible/gol
 ```
 #### Bleualign (Run OOM on 25,000 sentences)
 ```
-%timeit !python bin/Bleualign/batch_align.py eval/bible/job/bleualign.job
+%timeit !python bin/bleualign/batch_align.py eval/bible/job/bleualign.job
 ```
 #### Vecalign
 ```
