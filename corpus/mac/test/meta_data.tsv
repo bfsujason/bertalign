@@ -1,0 +1,25 @@
+text_id	book_id	trans_title	trans_title	book_title	chapter	author	translator	genre	trans_publisher	trans_pubdate
+001	001	The Golden Age	黄金时代	001-002	王小波	Hongling Zhang; Jason Sommer	Humor	State University of New York Press	2007
+002	001	The Golden Age	黄金时代	005-006	王小波	Hongling Zhang; Jason Sommer	Humor	State University of New York Press	2007
+003	001	The Golden Age	黄金时代	007-008	王小波	Hongling Zhang; Jason Sommer	Humor	State University of New York Press	2007
+004	001	The Golden Age	黄金时代	010-011	王小波	Hongling Zhang; Jason Sommer	Humor	State University of New York Press	2007
+005	002	The Deer and The Cauldron	鹿鼎记	001	金庸	John Minford	Martial Arts	Oxford University Press	1997
+006	002	The Deer and The Cauldron	鹿鼎记	006	金庸	John Minford	Martial Arts	Oxford University Press	1997
+007	002	The Deer and The Cauldron	鹿鼎记	008	金庸	John Minford	Martial Arts	Oxford University Press	1997
+008	002	The Deer and The Cauldron	鹿鼎记	010	金庸	John Minford	Martial Arts	Oxford University Press	1997
+009	003	The Story of the Stone	红楼梦	001	曹雪芹	David Hawkes	Classic	Penguin Group	1973
+010	003	The Story of the Stone	红楼梦	012	曹雪芹	David Hawkes	Classic	Penguin Group	1973
+011	003	The Story of the Stone	红楼梦	020	曹雪芹	David Hawkes	Classic	Penguin Group	1973
+012	003	The Story of the Stone	红楼梦	026	曹雪芹	David Hawkes	Classic	Penguin Group	1973
+013	004	Red Sorghum	红高粱	001	莫言	Howard Goldblatt	War	Viking Penguin	1993
+014	004	Red Sorghum	红高粱	012-013	莫言	Howard Goldblatt	War	Viking Penguin	1993
+015	004	Red Sorghum	红高粱	022	莫言	Howard Goldblatt	War	Viking Penguin	1993
+016	004	Red Sorghum	红高粱	039-042	莫言	Howard Goldblatt	War	Viking Penguin	1993
+017	005	The Song of Everlasting Sorrow	长恨歌	001	王安忆	Michael Berry; Susan Chan Egan	Romance	Clumbia University Press	2008
+018	005	The Song of Everlasting Sorrow	长恨歌	006	王安忆	Michael Berry; Susan Chan Egan	Romance	Clumbia University Press	2008
+019	005	The Song of Everlasting Sorrow	长恨歌	008	王安忆	Michael Berry; Susan Chan Egan	Romance	Clumbia University Press	2008
+020	005	The Song of Everlasting Sorrow	长恨歌	011	王安忆	Michael Berry; Susan Chan Egan	Romance	Clumbia University Press	2008
+021	006	The Three-Body Problem	三体	001	刘慈欣	Ken Liu	Sci-fi	Tor Book	2014
+022	006	The Three-Body Problem	三体	018	刘慈欣	Ken Liu	Sci-fi	Tor Book	2014
+023	006	The Three-Body Problem	三体	026	刘慈欣	Ken Liu	Sci-fi	Tor Book	2014
+024	006	The Three-Body Problem	三体	031	刘慈欣	Ken Liu	Sci-fi	Tor Book	2014

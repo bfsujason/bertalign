@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='utf-8'?>
+<linkGrp toDoc='corpus_test.017_en.xml' fromDoc='corpus_test.017_zh.xml'>
+<link type='1-1' xtargets='1:1;1:1' status='man'/>
+<link type='1-1' xtargets='1:2;1:2' status='man'/>
+<link type='1-1' xtargets='1:3;1:3' status='man'/>
+<link type='1-1' xtargets='1:4;1:4' status='man'/>
+<link type='2-1' xtargets='1:5 1:6;1:5' status='man'/>
+<link type='1-1' xtargets='1:7;1:6' status='man'/>
+<link type='1-1' xtargets='1:8;1:7' status='man'/>
+<link type='1-1' xtargets='1:9;1:8' status='man'/>
+<link type='1-1' xtargets='1:10;1:9' status='man'/>
+<link type='1-1' xtargets='1:11;1:10' status='man'/>
+<link type='1-1' xtargets='1:12;1:11' status='man'/>
+<link type='1-1' xtargets='1:13;1:12' status='man'/>
+<link type='1-1' xtargets='1:14;1:13' status='man'/>
+<link type='1-1' xtargets='1:15;1:14' status='man'/>
+<link type='1-1' xtargets='1:16;1:15' status='man'/>
+<link type='1-1' xtargets='1:17;1:16' status='man'/>
+<link type='1-1' xtargets='1:18;1:17' status='man'/>
+<link type='1-1' xtargets='1:19;1:18' status='man'/>
+<link type='1-1' xtargets='1:20;1:19' status='man'/>
+<link type='1-1' xtargets='1:21;1:20' status='man'/>
+<link type='1-1' xtargets='1:22;1:21' status='man'/>
+<link type='1-1' xtargets='1:23;1:22' status='man'/>
+<link type='3-1' xtargets='1:24 1:25 1:26;1:23' status='man'/>
+<link type='1-1' xtargets='1:27;1:24' status='man'/>
+<link type='1-1' xtargets='1:28;1:25' status='man'/>
+<link type='2-1' xtargets='1:29 1:30;1:26' status='man'/>
+<link type='3-1' xtargets='1:31 1:32 1:33;1:27' status='man'/>
+<link type='1-1' xtargets='1:34;1:28' status='man'/>
+<link type='1-1' xtargets='1:35;1:29' status='man'/>
+<link type='3-1' xtargets='1:36 1:37 1:38;1:30' status='man'/>
+<link type='1-1' xtargets='1:39;1:31' status='man'/>
+<link type='2-1' xtargets='1:40 1:41;1:32' status='man'/>
+<link type='3-2' xtargets='1:42 1:43 1:44;1:33 1:34' status='man'/>
+<link type='2-1' xtargets='1:45 1:46;1:35' status='man'/>
+<link type='2-1' xtargets='1:47 1:48;1:36' status='man'/>
+<link type='2-1' xtargets='1:49 1:50;1:37' status='man'/>
+<link type='1-1' xtargets='1:51;1:38' status='man'/>
+<link type='1-1' xtargets='1:52;1:39' status='man'/>
+<link type='1-1' xtargets='1:53;1:40' status='man'/>
+<link type='1-1' xtargets='1:54;1:41' status='man'/>
+<link type='1-1' xtargets='1:55;1:42' status='man'/>
+<link type='1-1' xtargets='1:56;1:43' status='man'/>
+<link type='1-1' xtargets='1:57;1:44' status='man'/>
+<link type='2-1' xtargets='1:58 1:59;1:45' status='man'/>
+<link type='1-1' xtargets='1:60;1:46' status='man'/>
+<link type='1-2' xtargets='1:61;1:47 1:48' status='man'/>
+<link type='1-1' xtargets='1:62;1:49' status='man'/>
+<link type='1-1' xtargets='1:63;1:50' status='man'/>
+<link type='2-1' xtargets='1:64 1:65;1:51' status='man'/>
+<link type='1-1' xtargets='1:66;1:52' status='man'/>
+<link type='2-1' xtargets='1:67 1:68;1:53' status='man'/>
+<link type='1-1' xtargets='1:69;1:54' status='man'/>
+<link type='1-1' xtargets='1:70;1:55' status='man'/>
+<link type='1-1' xtargets='1:71;1:56' status='man'/>
+<link type='1-1' xtargets='1:72;1:57' status='man'/>
+<link type='1-1' xtargets='1:73;1:58' status='man'/>
+<link type='1-1' xtargets='1:74;1:59' status='man'/>
+<link type='2-1' xtargets='1:75 1:76;1:60' status='man'/>
+<link type='2-1' xtargets='1:77 1:78;1:61' status='man'/>
+<link type='3-1' xtargets='1:79 1:80 1:81;1:62' status='man'/>
+<link type='2-1' xtargets='1:82 1:83;1:63' status='man'/>
+<link type='1-1' xtargets='1:84;1:64' status='man'/>
+<link type='1-1' xtargets='1:85;1:65' status='man'/>
+<link type='2-1' xtargets='1:86 1:87;1:66' status='man'/>
+<link type='1-1' xtargets='1:88;1:67' status='man'/>
+<link type='2-1' xtargets='1:89 1:90;1:68' status='man'/>
+<link type='1-1' xtargets='1:91;1:69' status='man'/>
+<link type='3-1' xtargets='1:92 1:93 1:94;1:70' status='man'/>
+<link type='1-1' xtargets='1:95;1:71' status='man'/>
+<link type='1-1' xtargets='1:96;1:72' status='man'/>
+<link type='1-1' xtargets='1:97;1:73' status='man'/>
+<link type='1-1' xtargets='1:98;1:74' status='man'/>
+<link type='1-1' xtargets='1:99;1:75' status='man'/>
+<link type='1-1' xtargets='1:100;1:76' status='man'/>
+<link type='2-1' xtargets='1:101 1:102;1:77' status='man'/>
+<link type='2-1' xtargets='1:103 1:104;1:78' status='man'/>
+<link type='3-1' xtargets='1:105 1:106 1:107;1:79' status='man'/>
+<link type='1-1' xtargets='1:108;1:80' status='man'/>
+<link type='1-1' xtargets='1:109;1:81' status='man'/>
+<link type='1-1' xtargets='1:110;1:82' status='man'/>
+<link type='1-1' xtargets='1:111;1:83' status='man'/>
+<link type='1-1' xtargets='1:112;1:84' status='man'/>
+<link type='1-1' xtargets='1:113;1:85' status='man'/>
+<link type='2-1' xtargets='1:114 1:115;1:86' status='man'/>
+<link type='2-1' xtargets='1:116 1:117;1:87' status='man'/>
+<link type='1-1' xtargets='1:118;1:88' status='man'/>
+<link type='1-1' xtargets='1:119;1:89' status='man'/>
+<link type='1-1' xtargets='1:120;1:90' status='man'/>
+<link type='1-1' xtargets='1:121;1:91' status='man'/>
+<link type='1-1' xtargets='1:122;1:92' status='man'/>
+<link type='1-1' xtargets='1:123;1:93' status='man'/>
+<link type='1-1' xtargets='1:124;1:94' status='man'/>
+<link type='1-1' xtargets='1:125;1:95' status='man'/>
+<link type='1-1' xtargets='1:126;1:96' status='man'/>
+<link type='1-1' xtargets='1:127;1:97' status='man'/>
+<link type='2-1' xtargets='1:128 1:129;1:98' status='man'/>
+<link type='1-1' xtargets='1:130;1:99' status='man'/>
+<link type='1-1' xtargets='1:131;1:100' status='man'/>
+<link type='1-1' xtargets='1:132;1:101' status='man'/>
+<link type='1-1' xtargets='1:133;1:102' status='man'/>
+<link type='1-1' xtargets='1:134;1:103' status='man'/>
+<link type='1-1' xtargets='1:135;1:104' status='man'/>
+<link type='2-1' xtargets='1:136 1:137;1:105' status='man'/>
+<link type='1-1' xtargets='1:138;1:106' status='man'/>
+<link type='1-1' xtargets='1:139;1:107' status='man'/>
+<link type='1-1' xtargets='1:140;1:108' status='man'/>
+<link type='1-1' xtargets='1:141;1:109' status='man'/>
+<link type='2-1' xtargets='1:142 1:143;1:110' status='man'/>
+<link type='1-1' xtargets='1:144;1:111' status='man'/>
+<link type='1-1' xtargets='1:145;1:112' status='man'/>
+<link type='1-1' xtargets='1:146;1:113' status='man'/>
+<link type='1-1' xtargets='1:147;1:114' status='man'/>
+<link type='1-1' xtargets='1:148;1:115' status='man'/>
+<link type='1-1' xtargets='1:149;1:116' status='man'/>
+<link type='1-1' xtargets='1:150;1:117' status='man'/>
+<link type='1-1' xtargets='1:151;1:118' status='man'/>
+<link type='1-1' xtargets='1:152;1:119' status='man'/>
+<link type='1-1' xtargets='1:153;1:120' status='man'/>
+<link type='2-1' xtargets='1:154 1:155;1:121' status='man'/>
+<link type='1-1' xtargets='1:156;1:122' status='man'/>
+<link type='1-1' xtargets='1:157;1:123' status='man'/>
+<link type='1-1' xtargets='1:158;1:124' status='man'/>
+<link type='1-1' xtargets='1:159;1:125' status='man'/>
+<link type='2-2' xtargets='1:160 1:161;1:126 1:127' status='man'/>
+<link type='1-1' xtargets='1:162;1:128' status='man'/>
+<link type='1-1' xtargets='1:163;1:129' status='man'/>
+<link type='1-1' xtargets='1:164;1:130' status='man'/>
+<link type='1-1' xtargets='1:165;1:131' status='man'/>
+<link type='2-2' xtargets='1:166 1:167;1:132 1:133' status='man'/>
+<link type='1-1' xtargets='1:168;1:134' status='man'/>
+<link type='2-1' xtargets='1:169 1:170;1:135' status='man'/>
+<link type='4-1' xtargets='1:171 1:172 1:173 1:174;1:136' status='man'/>
+<link type='2-1' xtargets='1:175 1:176;1:137' status='man'/>
+<link type='1-1' xtargets='1:177;1:138' status='man'/>
+<link type='2-1' xtargets='1:178 1:179;1:139' status='man'/>
+<link type='1-1' xtargets='1:180;1:140' status='man'/>
+<link type='1-1' xtargets='1:181;1:141' status='man'/>
+<link type='2-1' xtargets='1:182 1:183;1:142' status='man'/>
+<link type='1-1' xtargets='1:184;1:143' status='man'/>
+<link type='2-2' xtargets='1:185 1:186;1:144 1:145' status='man'/>
+<link type='2-1' xtargets='1:187 1:188;1:146' status='man'/>
+<link type='2-1' xtargets='1:189 1:190;1:147' status='man'/>
+<link type='1-1' xtargets='1:191;1:148' status='man'/>
+<link type='1-1' xtargets='1:192;1:149' status='man'/>
+<link type='2-1' xtargets='1:193 1:194;1:150' status='man'/>
+<link type='2-1' xtargets='1:195 1:196;1:151' status='man'/>
+<link type='1-1' xtargets='1:197;1:152' status='man'/>
+<link type='1-1' xtargets='1:198;1:153' status='man'/>
+<link type='2-1' xtargets='1:199 1:200;1:154' status='man'/>
+<link type='2-1' xtargets='1:201 1:202;1:155' status='man'/>
+<link type='1-1' xtargets='1:203;1:156' status='man'/>
+<link type='2-1' xtargets='1:204 1:205;1:157' status='man'/>
+<link type='1-1' xtargets='1:206;1:158' status='man'/>
+<link type='1-1' xtargets='1:207;1:159' status='man'/>
+<link type='2-1' xtargets='1:208 1:209;1:160' status='man'/>
+<link type='1-1' xtargets='1:210;1:161' status='man'/>
+<link type='1-1' xtargets='1:211;1:162' status='man'/>
+<link type='1-1' xtargets='1:212;1:163' status='man'/>
+<link type='1-1' xtargets='1:213;1:164' status='man'/>
+<link type='1-1' xtargets='1:214;1:165' status='man'/>
+<link type='2-1' xtargets='1:215 1:216;1:166' status='man'/>
+<link type='1-1' xtargets='1:217;1:167' status='man'/>
+<link type='1-1' xtargets='1:218;1:168' status='man'/>
+<link type='1-1' xtargets='1:219;1:169' status='man'/>
+<link type='2-1' xtargets='1:220 1:221;1:170' status='man'/>
+<link type='1-1' xtargets='1:222;1:171' status='man'/>
+<link type='1-2' xtargets='1:223;1:172 1:173' status='man'/>
+<link type='1-1' xtargets='1:224;1:174' status='man'/>
+<link type='1-1' xtargets='1:225;1:175' status='man'/>
+<link type='1-1' xtargets='1:226;1:176' status='man'/>
+<link type='1-1' xtargets='1:227;1:177' status='man'/>
+<link type='1-1' xtargets='1:228;1:178' status='man'/>
+<link type='1-1' xtargets='1:229;1:179' status='man'/>
+<link type='1-1' xtargets='1:230;1:180' status='man'/>
+<link type='1-1' xtargets='1:231;1:181' status='man'/>
+<link type='1-1' xtargets='1:232;1:182' status='man'/>
+<link type='2-1' xtargets='1:233 1:234;1:183' status='man'/>
+<link type='1-1' xtargets='1:235;1:184' status='man'/>
+<link type='1-1' xtargets='1:236;1:185' status='man'/>
+<link type='4-1' xtargets='1:237 1:238 1:239 1:240;1:186' status='man'/>
+<link type='1-1' xtargets='1:241;1:187' status='man'/>
+<link type='1-1' xtargets='1:242;1:188' status='man'/>
+<link type='1-1' xtargets='1:243;1:189' status='man'/>
+<link type='1-1' xtargets='1:244;1:190' status='man'/>
+<link type='2-1' xtargets='1:245 1:246;1:191' status='man'/>
+<link type='2-1' xtargets='1:247 1:248;1:192' status='man'/>
+<link type='2-1' xtargets='1:249 1:250;1:193' status='man'/>
+</linkGrp>
