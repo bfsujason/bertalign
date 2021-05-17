@@ -3,9 +3,7 @@ Word Embedding-Based Bilingual Sentence Aligner
 
 ## Evaluation Corpus
 This section describes the procedure of creating the evaluation corpora: the manually aligned corpus (MAC) of Chinese-English literary texts and the Bible corpus aligned at the verse level.
-### MAC
-Firstly, 5 chapters and their translations are sampled from each of the 6 novels included in MAC, obtaining a corpus of 30 bitexts. We then split the corpus into MAC-Dev and MAC-Test with the former containing 6 chapters and the latter 24 chapters.
-
+### MAC-Test
 The **MAC-Test** is saved in [corpus/mac/test](./corpus/mac/test)
 
 The sampling schemes for building MAC-Test can be found at [meta_data.tsv](./corpus/mac/test/meta_data.tsv)
@@ -23,7 +21,7 @@ We use [Intertext](https://wanthalf.saga.cz/intertext) to perform the manual ali
 In order to facilitate system evaluations, we delete the XML tags and save the clean gold alignment file with only sentence IDs in the [gold](./eval/mac/test/gold) directory
 
 ### Bible
-The Bible corpus is located in [corpus/bible](./corpus/bible)
+The **Bible** corpus is located in [corpus/bible](./corpus/bible)
 
 The directory makeup is similar to MAC, except that there is no *intertext* directory for manual alignments.
 
