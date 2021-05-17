@@ -74,3 +74,84 @@ python utils/embed.py –i corpus/bible/emb/zh.overlap –o corpus/bible/emb/zh.
 The parameter -i indicates the file containing sentence combinations.
 
 We use the [tofile](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.tofile.html) method provided by Python’s Numpy module to save the sentence embeddings in the file designated by -o.
+
+### Evaluation on MAC-Test
+#### Gale-Church
+```
+%timeit !python bin/gale_align.py --job eval/mac/test/job/galechurch.job
+
+perl utils/eval_mac.pl --meta corpus/mac/test/meta_data.tsv -gold eval/mac/test/gold --auto eval/mac/test/auto/galechurch \
+  --by book
+```
+#### Hunalign
+```
+%timeit !bin/hunalign/hunalign -text -batch bin/hunalign/ec.dic eval/mac/test/job/hunalign.job
+
+perl utils/eval_mac.pl --meta corpus/mac/test/meta_data.tsv -gold eval/mac/test/gold --auto eval/mac/test/auto/hunalign \
+  --by book
+```
+#### Bleualign
+```
+%timeit !python bin/bleualign/batch_align.py eval/mac/test/job/bleualign.job
+
+perl utils/eval_mac.pl --meta corpus/mac/test/meta_data.tsv -gold eval/mac/test/gold --auto eval/mac/test/auto/bleualign \
+  --by book
+```
+#### Vecalign
+```
+%timeit !python bin/vecalign/vecalign.py --job eval/mac/test/job/vecalign.job \
+  --src_embed corpus/mac/test/emb/zh.overlap corpus/mac/test/emb/zh.overlap.emb \
+  --tgt_embed corpus/mac/test/emb/en.overlap corpus/mac/test/emb/en.overlap.emb \
+  --alignment_max_size 8
+  
+perl utils/eval_mac.pl --meta corpus/mac/test/meta_data.tsv -gold eval/mac/test/gold --auto eval/mac/test/auto/vecalign \
+  --by book
+```
+#### Bertalign (Modified Cosine)
+```
+%timeit !python /bin/bert_align.py eval/mac/test/job/mbert.job \
+  --src_embed corpus/mac/test/emb/zh.overlap corpus/mac/test/embbert/zh.overlap.emb \
+  --tgt_embed corpus/mac/test/emb/en.overlap corpus/mac/test/emb/en.overlap.emb \
+  --margin --max_align 8
+  
+perl utils/eval_mac.pl --meta corpus/mac/test/meta_data.tsv -gold eval/mac/test/gold --auto eval/mac/test/auto/mbert \
+  --by book
+```
+### Evaluation on Bible
+#### Gale-Church
+```
+%timeit !python bin/gale_align.py --job eval/bible/job/galechurch.job
+
+perl utils/eval_bible.pl --meta corpus/bible/meta_data.tsv --gold eval/bible/gold --auto eval/bible/auto/galechurch \
+  --src_verse corpus/bible/en.verse --tgt_verse corpus/bible/zh.verse
+```
+#### Hunalign
+```
+%timeit !bin/hunalign/hunalign -text -batch bin/hunalign/ce.dic eval/bible/job/hunalign.job
+
+perl utils/eval_bible.pl --meta corpus/bible/meta_data.tsv --gold eval/bible/gold --auto eval/bible/auto/hunalign \
+  --src_verse corpus/bible/en.verse --tgt_verse corpus/bible/zh.verse
+```
+#### Bleualign (Run OOM on 25,000 sentences)
+```
+%timeit !python bin/Bleualign/batch_align.py eval/bible/job/bleualign.job
+```
+#### Vecalign
+```
+%timeit !python bin/vecalign/vecalign.py --job eval/bible/job/vecalign.job \
+  --src_embed corpus/bible/emb/en.overlap corpus/bible/emb/en.overlap.emb \
+  --tgt_embed corpus/bible/emb/zh.overlap corpus/bible/emb/zh.overlap.emb
+  
+perl utils/eval_bible.pl --meta corpus/bible/meta_data.tsv --gold eval/bible/gold --auto eval/bible/auto/vecalign \
+  --src_verse corpus/bible/en.verse --tgt_verse corpus/bible/zh.verse
+```
+#### Bertalign (Modified Cosine)
+```
+%timeit !python bin/bert_align.py --job eval/bible/job/mbert.job \
+  --src_embed corpus/bible/emb/en.overlap corpus/bible/emb/en.overlap.emb \
+  --tgt_embed corpus/bible/emb/zh.overlap corpus/bible/emb/zh.overlap.emb \
+  --margin
+
+perl utils/eval_bible.pl --meta corpus/bible/meta_data.tsv --gold eval/bible/gold --auto eval/bible/auto/mbert \
+  --src_verse corpus/bible/en.verse --tgt_verse corpus/bible/zh.verse
+```
