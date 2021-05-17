@@ -108,7 +108,7 @@ perl utils/eval_mac.pl --meta corpus/mac/test/meta_data.tsv -gold eval/mac/test/
 #### Bertalign (Modified Cosine)
 ```
 %timeit !python /bin/bert_align.py eval/mac/test/job/mbert.job \
-  --src_embed corpus/mac/test/emb/zh.overlap corpus/mac/test/embbert/zh.overlap.emb \
+  --src_embed corpus/mac/test/emb/zh.overlap corpus/mac/test/emb/zh.overlap.emb \
   --tgt_embed corpus/mac/test/emb/en.overlap corpus/mac/test/emb/en.overlap.emb \
   --margin --max_align 8
   
