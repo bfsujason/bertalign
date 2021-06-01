@@ -21,7 +21,7 @@ We use [Intertext](https://wanthalf.saga.cz/intertext) to create the manual alig
 In order to facilitate system evaluations, we delete the XML tags and save the clean gold alignment file with only sentence IDs in the [gold](./eval/mac/test/gold) directory
 
 ### Bible
-The **Bible** corpus is located in [corpus/bible](./corpus/bible)
+The **Bible** corpus is saved in [corpus/bible](./corpus/bible)
 
 The directory makeup is similar to MAC-Test, except that there is no *intertext* directory for manual alignments.
 
@@ -34,7 +34,7 @@ All the experiments reported in the paper are conducted using [Google Colab](htt
 ### Job File
 Before performing the automatic alignment, a job file is created for each aligner for batch processing. Each row in the job file represents an alignment task, which is made of three tab-separated file names for source, target and output text.
 
-The job files for MAC-Test and Bible are located in *eval/mac/test/job* and *eval/bible/job*
+The job files for MAC-Test and Bible are located in *eval/mac/test/job* and *eval/bible/job* respectively.
 
 ### Sentence Embeddings
 Before embedding the source and target sentences, we use the following Python script to create the combinations of consecutive sentences:
