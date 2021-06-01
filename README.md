@@ -16,7 +16,7 @@ The inputs to *Hunalign* are saved in the [tok](./corpus/mac/test/tok) directory
 
 The [emb](./corpus/mac/test/emb) directory is made up of the overlapping sentences and their embeddings for *Vecalign* and *BertAlign*.
 
-We use [Intertext](https://wanthalf.saga.cz/intertext) to perform the manual alignment for MAC and save the gold alignments in the [intertext](./corpus/mac/test/intertext) directory.
+We use [Intertext](https://wanthalf.saga.cz/intertext) to create the manual alignment for MAC and save the gold alignments in the [intertext](./corpus/mac/test/intertext) directory.
 
 In order to facilitate system evaluations, we delete the XML tags and save the clean gold alignment file with only sentence IDs in the [gold](./eval/mac/test/gold) directory
 
