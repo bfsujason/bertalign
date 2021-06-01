@@ -6,7 +6,7 @@ This section describes the procedure of creating the evaluation corpora: the man
 ### MAC-Test
 The **MAC-Test** is saved in [corpus/mac/test](./corpus/mac/test)
 
-The sampling schemes for building MAC-Test can be found at [meta_data.tsv](./corpus/mac/test/meta_data.tsv)
+The sampling scheme for building MAC-Test can be found at [meta_data.tsv](./corpus/mac/test/meta_data.tsv)
 
 There are 4 subdirectories in MAC-Test.
 
