@@ -45,7 +45,7 @@ python utils/overlap.py -i corpus/mac/test/split -o corpus/mac/test/emb/zh.overl
 
 # Bible
 python utils/overlap.py -i corpus/bible/split -o corpus/bible/en.overlap –l en –n 5
-python utils/overlap.py -i corpus/bible/split -o corpus/bible/zh.overlap –l en –n 5
+python utils/overlap.py -i corpus/bible/split -o corpus/bible/zh.overlap –l zh –n 5
 ```
 Use parameters -i to specify the input data directory and -o the output file path.
 
