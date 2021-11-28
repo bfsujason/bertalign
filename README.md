@@ -16,7 +16,7 @@ pip install faiss-gpu
 pip install sentence-transformers
 ```
 
-Please note that embedding sentences on GPU-enabled machines is much faster than those with CPU only. The following experiments are conducted using [Google Colab](https://colab.research.google.com/) which provides free GPU service.
+Note that embedding sentences on GPU-enabled machines is much faster than those with CPU only. The following experiments are conducted using [Google Colab](https://colab.research.google.com/) which provides free GPU service.
 
 ## Evaluation Corpora
 Bertalign is language-agnostic thanks to the cross-language embedding models  [sentence-transformers](https://github.com/UKPLab/sentence-transformers).
