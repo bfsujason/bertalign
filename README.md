@@ -7,7 +7,7 @@ Bertalign uses [cross-lingua embedding models](https://github.com/UKPLab/sentenc
 
 ## Installation
 
-Bertalign is developed using Python and tested on Win 10 and Linux systems. You need to install the following packages before running Bertalign:
+Bertalign is developed using Python and tested on Windows 10 and Linux systems. You need to install the following packages before running Bertalign:
 
 ```
 pip install numba
