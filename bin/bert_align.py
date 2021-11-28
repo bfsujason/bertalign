@@ -26,7 +26,7 @@ import numba as nb
 
 def main():
   # user-defined parameters
-  parser = argparse.ArgumentParser('Sentence alignment using Vecalign')
+  parser = argparse.ArgumentParser('Sentence alignment using Bertalign')
   parser.add_argument('-s', '--src', type=str, required=True, help='preprocessed source file to align')
   parser.add_argument('-t', '--tgt', type=str, required=True, help='preprocessed target file to align')
   parser.add_argument('-o', '--out', type=str, required=True, help='Output directory.')
