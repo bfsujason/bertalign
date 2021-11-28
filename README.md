@@ -1,7 +1,7 @@
 # Bertalign
 Word Embedding-Based Bilingual Sentence Aligner
 
-Bertalign is designed to facilitate the construction of sentence-aligned bilingual corpora, which have a wide range of applications in translated-related research such as corpus-based translation studies, contrastive linguistics, computer-assisted translation, translator education and machine translation.
+Bertalign is designed to facilitate the construction of sentence-aligned bilingual corpora, which have a wide range of applications in translation-related research such as corpus-based translation studies, contrastive linguistics, computer-assisted translation, translator education and machine translation.
 
 Bertalign uses [cross-lingua embedding models](https://github.com/UKPLab/sentence-transformers) to represent source and target sentences in vectors in order to capture semantically similar sentences in both languages, which according to our explements achieves more accurate results than the traditional length-, dictionary-, or MT-based alignment methods such as [Galechurch](https://aclanthology.org/J93-1004/), [Hunalign](http://mokk.bme.hu/en/resources/hunalign/) and [Bleualign](https://github.com/rsennrich/Bleualign). It also performs better than [Vecalign](https://github.com/thompsonb/vecalign) on our dataset of bilingual Chinese-English literary texts.
 
