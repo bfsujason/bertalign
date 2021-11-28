@@ -16,7 +16,7 @@ pip install faiss-gpu
 pip install sentence-transformers
 ```
 
-Note that embedding sentences on GPU-enabled machines is much faster than those with CPU only. The following experiments are conducted using [Google Colab](https://colab.research.google.com/) which provides free GPU service.
+Please note that embedding sentences on GPU-enabled machines is much faster than those with CPU only. The following experiments are conducted using [Google Colab](https://colab.research.google.com/) which provides free GPU service.
 
 ## Evaluation Corpora
 Bertalign is language-agnostic thanks to the cross-language embedding models  [sentence-transformers](https://github.com/UKPLab/sentence-transformers).
@@ -110,7 +110,7 @@ The parameter *-n* indicates the maximum number of overlapping sentences allowed
 
 Please refer to [Sennrich & Volk (2010)](https://aclanthology.org/people/r/rico-sennrich/) for the difference between Strict and Lax evaluation method. We can see that the F1 score is 0.91 when aligning MAC-Dev using Bertalign.
 
-Please note that aligning literary texts is not an easy task, since they contain more interpretive and free translations than non-literary works. You can refer to [Xu et al. (2015)](https://aclanthology.org/2015.lilt-12.6/) for more details about sentence alignment of literary texts. Let's see how the other systems perform on MAC-Dev:
+Aligning literary texts is not an easy task, since they contain more interpretive and free translations than non-literary works. You can refer to [Xu et al. (2015)](https://aclanthology.org/2015.lilt-12.6/) for more details about sentence alignment of literary texts. Let's see how the other systems perform on MAC-Dev:
 
 #### Baseline Approaches
 
