@@ -36,7 +36,7 @@ We use [Moses sentence splitter](https://github.com/moses-smt/mosesdecoder/blob/
 The [auto](./data/mac/dev/auto) and [gold](./data/mac/dev/gold) directories are for automatic and gold alignments. All the gold alignments are created manually using [Intertext](https://wanthalf.saga.cz/intertext).
 
 ### Bible
-[The Bible corpus](./data/bible) with 5,000 sentences on the source side is selected from the public [multilingual Bible corpus](https://github.com/christos-c/bible-corpus/tree/master/bibles). This corpus is mainly used to evaluate the speed of Bertalign.
+[The Bible corpus](./data/bible), consisting of 5,000 source and 6,301 target sentences, is selected from the public [multilingual Bible corpus](https://github.com/christos-c/bible-corpus/tree/master/bibles). This corpus is mainly used to evaluate the speed of Bertalign.
 
 The directory makeup is similar to MAC-Dev, except that the gold alignments for the Bible corpus are generated automatically from the original verse-aligned Bible corpus.
 
