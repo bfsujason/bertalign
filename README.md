@@ -46,7 +46,7 @@ In order to compare the sentence-based alignments returned by various aligners w
 All the experiments are conducted on [Google Colab](https://colab.research.google.com/).
 
 ### Sentence Embeddings
-We use the Python script [embed_sents.py](./bin/embed_sents.py) to create the sentence embedddings for the MAC-Dev and the Bible corpus:
+We use the Python script [embed_sents.py](./bin/embed_sents.py) to create the sentence embedddings for the MAC-Dev and the Bible corpus. This script is based on [Vecalign developed by Brian Thompson](https://github.com/thompsonb).
 ```
 # Embedding MAC-Dev Chinese
 !python bin/embed_sents.py \
@@ -76,7 +76,7 @@ We use the Python script [embed_sents.py](./bin/embed_sents.py) to create the se
   -m data/bible/meta_data.tsv \
   -n 5
 ```
-The parameter *-n* indicates the maximum number of overlapping sentences allowed on the source and target side, which is similar to word *n*-grams applied to sentences. After running the script, the overlapping sentences in the source and target texts and their embeddings are saved in the file *overlap* and *overlap.emb* respectively.
+The parameter *-n* indicates the maximum number of overlapping sentences allowed on the source and target side, which is similar to word *n*-grams applied to sentences. After running the script, the overlapping sentences *overlap* in the source and target texts and their embeddings *overlap.emb* are saved in the directory [mac/dev/zh](./data/mac/dev/zh), [mac/dev/en](./data/mac/dev/en),  [bible/zh](./data/bible/zh), and [bible/en](./data/bible/en).
 
 ### Evaluation on MAC-Dev
 
@@ -110,7 +110,7 @@ The parameter *-n* indicates the maximum number of overlapping sentences allowed
 
 Please refer to [Sennrich & Volk (2010)](https://aclanthology.org/people/r/rico-sennrich/) for the difference between Strict and Lax evaluation method. We can see that the F1 score is 0.91 when aligning MAC-Dev using Bertalign.
 
-Please note that aligning literary texts is not an easy task, since they contain more interpretive and free translations than non-literary works ([Xu et al. (2015)](https://aclanthology.org/2015.lilt-12.6/)). Let's see how the other systems perform on MAC-Dev:
+Please note that aligning literary texts is not an easy task, since they contain more interpretive and free translations than non-literary works. You can refer to [Xu et al. (2015)](https://aclanthology.org/2015.lilt-12.6/) for more details about sentence alignment of literary texts. Let's see how the other systems perform on MAC-Dev:
 
 #### Baseline Approaches
 
