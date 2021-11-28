@@ -359,7 +359,7 @@ It takes 78.898 seconds to align all the sentences.
   --tgt_verse data/bible/zh.verse
 ```
 ```
-It takes 4.676 seconds to aligent all the sentences.
+It takes 4.676 seconds to align all the sentences.
 ---------------------------------
 |             |  Strict |    Lax  |
 | Precision   |   0.977 |   1.000 |
