@@ -25,7 +25,7 @@ For now, we only use the following two Chinese-English corpora to evaluate the p
 
 ### MAC-Dev
 
-[MAC-Dev](./data/mac/dev) is the development set selected from the MAC corpus, a manually aligned corpus of Chinese-English literary texts. The sampling schemes for MAC-Dev can be found at [meta_data.tsv](./data/mac/dev/meta_data.tsv)
+[MAC-Dev](./data/mac/dev) is the development set selected from the MAC corpus, a manually aligned corpus of Chinese-English literary texts. The sampling schemes for MAC-Dev can be found at [meta_data.tsv](./data/mac/dev/meta_data.tsv).
 
 There are 4 subdirectories in MAC-Dev:
 
