@@ -367,3 +367,9 @@ It takes 4.676 seconds to align all the sentences.
 | F1          |   0.978 |   1.000 |
  ---------------------------------
 ```
+
+## TODO List
+
+Evaluate Bertalign on datasets containing language pairs other than Chinese and English.
+
+Narrow down the search space of faiss along the diagonal of target matrix to reduce the complexity of finding Top-*k* semantically similar sentences.
