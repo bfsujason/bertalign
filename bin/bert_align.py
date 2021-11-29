@@ -26,19 +26,20 @@ import numba as nb
 def main():
   # user-defined parameters
   parser = argparse.ArgumentParser('Sentence alignment using Bertalign')
-  parser.add_argument('-s', '--src', type=str, required=True, help='preprocessed source file to align')
-  parser.add_argument('-t', '--tgt', type=str, required=True, help='preprocessed target file to align')
-  parser.add_argument('-o', '--out', type=str, required=True, help='Output directory.')
-  parser.add_argument('-m', '--meta', type=str, required=True, help='Metadata file.')
+  parser.add_argument('-s', '--src', type=str, required=True, help='Source texts directory.')
+  parser.add_argument('-t', '--tgt', type=str, required=True, help='Target texts directory.')
+  parser.add_argument('-o', '--out', type=str, required=True, help='Alignment directory.')
+  parser.add_argument('-m', '--meta', type=str, required=True, help='Metadata file path.')
   parser.add_argument('--src_embed', type=str, nargs=2, required=True,
-            help='Source embeddings. Requires two arguments: first is a text file, sencond is a binary embeddings file. ')
+            help='Source overlapping and embedding file paths.')
   parser.add_argument('--tgt_embed', type=str, nargs=2, required=True,
-            help='Target embeddings. Requires two arguments: first is a text file, sencond is a binary embeddings file. ')
-  parser.add_argument('--max_align', type=int, default=5, help='Maximum alignment types, n + m <= this value.')
+            help='Target overlapping and embedding file paths.')
+  parser.add_argument('--max_align', type=int, default=5,
+            help='Maximum number of source+target sentences allowed in each alignment segment.')
   parser.add_argument('--win', type=int, default=5, help='Window size for the second-pass alignment.')
   parser.add_argument('--top_k', type=int, default=3, help='Top-k target neighbors of each source sentence.')
   parser.add_argument('--skip', type=float, default=-0.1, help='Similarity score for 0-1 and 1-0 alignment.')
-  parser.add_argument('--margin', action='store_true', help='Margin-based cosine similarity')
+  parser.add_argument('--margin', action='store_true', help='Margin-based modified cosine similarity.')
   args = parser.parse_args()
   
   # Read in source and target embeddings.
