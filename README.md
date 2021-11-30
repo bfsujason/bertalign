@@ -440,6 +440,15 @@ Bertalign achieves 0.94 F1 score on Text+Berg, which is 4 points higher than the
   -g data/text+berg/gold
 ```
 
+```
+---------------------------------
+|             |  Strict |    Lax  |
+| Precision   |   0.869 |   0.993 |
+| Recall      |   0.857 |   0.984 |
+| F1          |   0.863 |   0.988 |
+ ---------------------------------
+```
+
 This F1 score is 4 points lower than that reported in [Thompson & Koehn 2019](https://aclanthology.org/D19-1136/). The original Vecalign paper uses [LASER](https://github.com/facebookresearch/LASER) to embed the source and target texts while we use [sentence-transformers](https://github.com/UKPLab/sentence-transformers), which may have caused the gap.
 
 ## Post-processing
