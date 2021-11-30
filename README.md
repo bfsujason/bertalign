@@ -3,7 +3,7 @@ Word Embedding-Based Bilingual Sentence Aligner
 
 Bertalign is designed to facilitate the construction of bilingual parallel corpora, which have a wide range of applications in translation-related research such as corpus-based translation studies, contrastive linguistics, computer-assisted translation, translator education and machine translation.
 
-Bertalign uses [cross-lingua embedding models](https://github.com/UKPLab/sentence-transformers) to represent source and target sentences so that semantically similar sentences in different languages can be mapped onto similar vector spaces. According to our experiments, Bertalign achieves more accurate results than the traditional length-, dictionary-, or MT-based alignment methods such as [Galechurch](https://aclanthology.org/J93-1004/), [Hunalign](http://mokk.bme.hu/en/resources/hunalign/) and [Bleualign](https://github.com/rsennrich/Bleualign). It also performs better than [Vecalign](https://github.com/thompsonb/vecalign) on MAC, a manually aligned parallel corpus of Chinese-English literary texts.
+Bertalign uses the [LaBSE multilingual BERT models](https://arxiv.org/abs/2007.01852) provided by [sentence-transformers](https://github.com/UKPLab/sentence-transformers)  to represent source and target sentences so that semantically similar sentences in different languages can be mapped onto similar vector spaces. According to our experiments, Bertalign achieves more accurate results than the traditional length-, dictionary-, or MT-based alignment methods such as [Galechurch](https://aclanthology.org/J93-1004/), [Hunalign](http://mokk.bme.hu/en/resources/hunalign/) and [Bleualign](https://github.com/rsennrich/Bleualign). It also performs better than [Vecalign](https://github.com/thompsonb/vecalign) on MAC, a manually aligned parallel corpus of Chinese-English literary texts.
 
 ## Installation
 
@@ -392,7 +392,25 @@ python bin/conert_format.py \
   -f intertext
 ```
 
+## Prepare your own data
 
+In order to align your own bilingual texts with Bertalign, you can run the following script to split the source and target texts into sentences:
+
+```
+# Splitting Chinese text
+python utils/sent_splitter.py \
+  -i utils/zh_raw
+  -o utils/zh
+  -l zh
+  
+# Splitting English text
+python utils/sent_splitter.py \
+  -i utils/en_raw
+  -o utils/en
+  -l zh
+```
+
+This script uses multilingual sentence splitter [pySBD](https://github.com/nipunsadvilkar/pySBD) to split raw [Chinese](http://www.scio.gov.cn/zfbps/32832/Document/1714274/1714274.htm) and [English](http://www.scio.gov.cn/zfbps/32832/Document/1714277/1714277.htm) texts into sentences. pySBD develops a rule-based algorithm for sentence boundary detection of [23 languages](https://github.com/nipunsadvilkar/pySBD/tree/master/pysbd/lang). You can specify the language using [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) with the parameter *-l*.
 
 ## TODO List
 
