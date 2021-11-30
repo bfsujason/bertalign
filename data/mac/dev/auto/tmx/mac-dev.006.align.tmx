@@ -111,12 +111,8 @@
 <tuv xml:lang="en-US"><seg>"Well, since Professor Ye asked me to help you, let's do the observation. It's not a big deal. If you just need one percent precision, data from the antique COBE is sufficient."</seg></tuv>
 </tu>
 <tu>
-<tuv xml:lang="zh-CN"><seg></seg></tuv>
-<tuv xml:lang="en-US"><seg>As he spoke, Sha typed quickly at the terminal.</seg></tuv>
-</tu>
-<tu>
 <tuv xml:lang="zh-CN"><seg>沙瑞山说着，在终端上忙活起来，很快屏幕上出现一条平直的绿线，“你看，这就是当前宇宙整体背景辐射的实时数值曲线，哦，应该叫直线才对，数值是2.726±0.010K，那个误差是银河系运动产生的多普勒效应，已经滤掉了。</seg></tuv>
-<tuv xml:lang="en-US"><seg>Soon a flat green line appeared on the screen. "This curve is the real-time measurement of the overall cosmic microwave background—oh, calling it a straight line would be more accurate. The temperature is 2.725±0.002K. The error range is due to the Doppler effect from the motion of the Milky Way, which has already been filtered out.</seg></tuv>
+<tuv xml:lang="en-US"><seg>As he spoke, Sha typed quickly at the terminal. Soon a flat green line appeared on the screen. "This curve is the real-time measurement of the overall cosmic microwave background—oh, calling it a straight line would be more accurate. The temperature is 2.725±0.002K. The error range is due to the Doppler effect from the motion of the Milky Way, which has already been filtered out.</seg></tuv>
 </tu>
 <tu>
 <tuv xml:lang="zh-CN"><seg>如果发生你所说的超过百分之一振幅的波动，这条线就会变红并将波动显示出来。</seg></tuv>
@@ -339,12 +335,8 @@
 <tuv xml:lang="en-US"><seg>Wang grabbed the first page as soon as it came out of the laser printer, and, with a pencil, began to match the distance between the peaks with the Morse code chart he took out of his pocket.</seg></tuv>
 </tu>
 <tu>
-<tuv xml:lang="zh-CN"><seg>短长长长长、短长长长长、短短短短短、长长长短短、长长短短长长、短短长长长、短短短短长、长长短短长长、短短短长长、长长短短短，这是1108：21：37。</seg></tuv>
-<tuv xml:lang="en-US"><seg>short-long-long-long-long, short-long-long-long-long, long-long-long-long-long, long-long-long-short-short, long-long-long-short-short-short, short-short-long-long-long, short-long-long-long-long, long-long-long-short-short-short, short-short-short-long-long, long-long-short-short-short. That's 1108:21:37, Wang thought.</seg></tuv>
-</tu>
-<tu>
-<tuv xml:lang="zh-CN"><seg>短长长长长、短长长长长、短短短短短、长长长短短、长长短短长长、短短长长长、短短短短长、长长短短长长、短短短长长、长短短短短，这是1108：21：36。 短长长长长、短长长长长、短短短短短、长长长短短、长长短短长长、短短长长长、短短短短长、长长短短长长、短短短长长、短短短短短，这是1108：21：35。 ……</seg></tuv>
-<tuv xml:lang="en-US"><seg>short-long-long-long-long, short-long-long-long-long, long-long-long-long-long, long-long-long-short-short, long-long-long-short-short-short, short-short-long-long-long, short-long-long-long-long, long-long-long-short-short-short, short-short-short-long-long, long-short-short-short-short—that's 1108:21:36.</seg></tuv>
+<tuv xml:lang="zh-CN"><seg>短长长长长、短长长长长、短短短短短、长长长短短、长长短短长长、短短长长长、短短短短长、长长短短长长、短短短长长、长长短短短，这是1108：21：37。 短长长长长、短长长长长、短短短短短、长长长短短、长长短短长长、短短长长长、短短短短长、长长短短长长、短短短长长、长短短短短，这是1108：21：36。 短长长长长、短长长长长、短短短短短、长长长短短、长长短短长长、短短长长长、短短短短长、长长短短长长、短短短长长、短短短短短，这是1108：21：35。 ……</seg></tuv>
+<tuv xml:lang="en-US"><seg>short-long-long-long-long, short-long-long-long-long, long-long-long-long-long, long-long-long-short-short, long-long-long-short-short-short, short-short-long-long-long, short-long-long-long-long, long-long-long-short-short-short, short-short-short-long-long, long-long-short-short-short. That's 1108:21:37, Wang thought. short-long-long-long-long, short-long-long-long-long, long-long-long-long-long, long-long-long-short-short, long-long-long-short-short-short, short-short-long-long-long, short-long-long-long-long, long-long-long-short-short-short, short-short-short-long-long, long-short-short-short-short—that's 1108:21:36.</seg></tuv>
 </tu>
 <tu>
 <tuv xml:lang="zh-CN"><seg>倒计时在宇宙尺度上继续，已经过去了92小时，还剩1108小时？</seg></tuv>
@@ -516,11 +508,11 @@
 </tu>
 <tu>
 <tuv xml:lang="zh-CN"><seg>汪淼将箱子放到车座上打开，拿出一副3K眼镜，这东西很像他刚用过的V装具中的头盔显示器。</seg></tuv>
-<tuv xml:lang="en-US"><seg>Wang opened the suitcase on the backseat of his car and took out a pair of 3K glasses. It resembled the display inside the panoramic viewing helmet of the V-suit. He put the glasses on and looked around.</seg></tuv>
+<tuv xml:lang="en-US"><seg>Wang opened the suitcase on the backseat of his car and took out a pair of 3K glasses. It resembled the display inside the panoramic viewing helmet of the V-suit.</seg></tuv>
 </tu>
 <tu>
 <tuv xml:lang="zh-CN"><seg>他拿起一副走到车外戴上，透过镜片看到的城市夜景没有变化，只是暗了些，这时他才想起要将开关打开，立刻，城市化作一团团朦胧的光晕，大部分亮度固定，还有一些闪烁或移动着。</seg></tuv>
-<tuv xml:lang="en-US"><seg>The city looked the same as before, only dimmer. Then he remembered that he had to switch them on. The city turned into many hazy glowing halos. Most were fixed, but a few flickered or moved.</seg></tuv>
+<tuv xml:lang="en-US"><seg>He put the glasses on and looked around. The city looked the same as before, only dimmer. Then he remembered that he had to switch them on. The city turned into many hazy glowing halos. Most were fixed, but a few flickered or moved.</seg></tuv>
 </tu>
 <tu>
 <tuv xml:lang="zh-CN"><seg>他知道，这都是被转化为可见光的厘米微波，每团光晕的中心就是一个发射源，由于波长的原因，不可能看清形状。</seg></tuv>
