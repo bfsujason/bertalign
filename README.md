@@ -3,7 +3,7 @@ Word Embedding-Based Bilingual Sentence Aligner
 
 Bertalign is designed to facilitate the construction of bilingual parallel corpora, which have a wide range of applications in translation-related research such as corpus-based translation studies, contrastive linguistics, computer-assisted translation, translator education and machine translation.
 
-Bertalign uses the [LaBSE multilingual BERT model](https://arxiv.org/abs/2007.01852) (supporting 109 languages) provided by [sentence-transformers](https://github.com/UKPLab/sentence-transformers) to represent source and target sentences so that semantically similar sentences in different languages can be mapped onto similar vector spaces. According to our experiments, Bertalign achieves more accurate results than the traditional length-, dictionary-, or MT-based alignment methods such as [Galechurch](https://aclanthology.org/J93-1004/), [Hunalign](http://mokk.bme.hu/en/resources/hunalign/) and [Bleualign](https://github.com/rsennrich/Bleualign). It also performs better than [Vecalign](https://github.com/thompsonb/vecalign) on MAC, a manually aligned parallel corpus of Chinese-English literary texts.
+Bertalign uses the [LaBSE multilingual BERT model](https://arxiv.org/abs/2007.01852) (supporting 109 languages) provided by [sentence-transformers](https://github.com/UKPLab/sentence-transformers) to represent source and target sentences so that semantically similar sentences in different languages can be mapped onto similar vector spaces. According to our experiments, Bertalign achieves more accurate results than the traditional length-, dictionary-, or MT-based alignment methods such as [Galechurch](https://aclanthology.org/J93-1004/), [Hunalign](http://mokk.bme.hu/en/resources/hunalign/) and [Bleualign](https://github.com/rsennrich/Bleualign).  It also performs better than [Vecalign](https://github.com/thompsonb/vecalign) on MAC, a manually aligned parallel corpus of Chinese-English literary texts, and Text+Berg, a public German-French parallel corpus consisting of yearbook articles published by Swiss Alpine Club.
 
 ## Installation
 
@@ -21,7 +21,7 @@ Please note that embedding sentences on GPU-enabled machines is much faster than
 ## Evaluation Corpora
 Bertalign is language-agnostic thanks to the cross-language embedding model  [sentence-transformers](https://github.com/UKPLab/sentence-transformers).
 
-For now, we only use the following two Chinese-English corpora to evaluate the performance of Bertalign. Dataset with other language pairs are to be added later.
+For now, we use two Chinese-English corpora and one German-French corpus to evaluate the performance of Bertalign. Dataset with other language pairs are to be added later.
 
 ### MAC-Dev
 
@@ -42,7 +42,12 @@ The directory makeup is similar to MAC-Dev, except that the gold alignments for 
 
 In order to compare the sentence-based alignments returned by various aligners with the verse-based gold alignments, we put the verse ID for each sentence in the files [en.verse](./data/bible/en.verse) and [zh.verse](./data/bible/zh.verse), which are used to merge consecutive sentences in the automatic alignments if they belong to the same verse.
 
+### Text+Berg
+
+[Text+Berg corpus](./data/text+berg) consists of the yearbooks of Swiss Alpine Club, which are published in both German and French ([Volk et al., 2010](https://aclanthology.org/L10-1069/)). [Sennrich & Volk 2010](https://aclanthology.org/2010.amta-papers.14/) manually aligned 991 German and 1,101 French sentences selected from the corpus and made it [publicly available](https://github.com/rsennrich/Bleualign/tree/master/eval) for evaluation of automatic sentence aligners.
+
 ## System Comparisons
+
 All the experiments are conducted on [Google Colab](https://colab.research.google.com/).
 
 ### Sentence Embeddings
@@ -75,6 +80,20 @@ We use the Python script [embed_sents.py](./bin/embed_sents.py) to create the se
   -o data/bible/zh/overlap data/bible/zh/overlap.emb \
   -m data/bible/meta_data.tsv \
   -n 5
+  
+# Embedding Text+Berg German 
+!python bin/embed_sents.py \
+  -i data/text+berg/de \
+  -o data/text+berg/de/overlap data/text+berg/de/overlap.emb \
+  -m data/text+berg/meta_data.tsv \
+  -n 8
+  
+# Embedding Text+Berg French 
+!python bin/embed_sents.py \
+  -i data/text+berg/fr \
+  -o data/text+berg/fr/overlap data/text+berg/fr/overlap.emb \
+  -m data/text+berg/meta_data.tsv \
+  -n 8
 ```
 The parameter *-n* indicates the maximum number of overlapping sentences allowed on the source and target side, which is similar to word *n*-grams applied to sentences. After running the script, the overlapping sentences *overlap* in the source and target texts and their embeddings *overlap.emb* are saved in the directory [mac/dev/zh](./data/mac/dev/zh), [mac/dev/en](./data/mac/dev/en),  [bible/zh](./data/bible/zh), and [bible/en](./data/bible/en).
 
@@ -367,6 +386,61 @@ It takes 4.676 seconds to align all the sentences.
 | F1          |   0.978 |   1.000 |
  ---------------------------------
 ```
+
+### Evaluation on Text+Berg
+
+ #### Bertalign
+
+```
+# Run Bertalign on Text+Berg
+!python bin/bert_align.py \
+  -s data/text+berg/de \
+  -t data/text+berg/fr \
+  -o data/text+berg/auto \
+  -m data/text+berg/meta_data.tsv \
+  --src_embed data/text+berg/de/overlap data/text+berg/de/overlap.emb \
+  --tgt_embed data/text+berg/fr/overlap data/text+berg/fr/overlap.emb \
+  --max_align 8 --margin
+
+# Evaluate Bertalign on Text+Berg
+!python bin/eval.py \
+  -t data/text+berg/auto \
+  -g data/text+berg/gold
+```
+
+```
+---------------------------------
+|             |  Strict |    Lax  |
+| Precision   |   0.939 |   0.994 |
+| Recall      |   0.941 |   0.991 |
+| F1          |   0.940 |   0.992 |
+ ---------------------------------
+```
+
+Bertalign achieves 0.94 F1 score on Text+Berg, which is 4 points higher than the results by Vecalign ([Thompson & Koehn 2019](https://aclanthology.org/D19-1136/)).
+
+#### Baseline Approaches
+
+##### Vecalign
+
+```
+# Run Vecalign on Text+Berg
+!python ext-lib/vecalign/vecalign.py \
+  -s data/text+berg/de \
+  -t data/text+berg/fr \
+  -o data/text+berg/auto \
+  -m data/text+berg/meta_data.tsv \
+  --src_embed data/text+berg/de/overlap data/text+berg/de/overlap.emb \
+  --tgt_embed data/text+berg/fr/overlap data/text+berg/fr/overlap.emb \
+  -a 8 -v
+
+# Evaluate Vecalign on Text+Berg
+!python bin/eval.py \
+  -t data/text+berg/auto \
+  -g data/text+berg/gold
+```
+
+This F1 score is 4 points lower than that reported in [Thompson & Koehn 2019](https://aclanthology.org/D19-1136/). The original Vecalign paper uses [LASER](https://github.com/facebookresearch/LASER) to embed the source and target texts while we use [sentence-transformers](https://github.com/UKPLab/sentence-transformers), which may have caused the gap.
 
 ## Post-processing
 
