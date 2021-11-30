@@ -3,7 +3,7 @@
 
 """
 Usage:
-python -p MAC-Dev \
+python -p mac-dev \
     -s data/mac/dev/zh zh \
     -t data/mac/dev/en en \
     -a data/mac/dev/auto \
