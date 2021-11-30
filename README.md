@@ -376,18 +376,20 @@ Bertalign supports two output formats for manual alignments with [LF Aligner](ht
 
 ```
 # Convert automatic alignments to TSV for LF Aligner
-python -p mac-dev \
-	-s data/mac/dev/zh zh \
-    -t data/mac/dev/en en \
-    -a data/mac/dev/auto \
-    -f tsv
+python bin/convert_format.py \
+  -p mac-dev \
+  -s data/mac/dev/zh zh \
+  -t data/mac/dev/en en \
+  -a data/mac/dev/auto \
+  -f tsv
 
 # Convert automatic alignments to XML for Intertext
-python -p mac-dev \
-	-s data/mac/dev/zh zh \
-    -t data/mac/dev/en en \
-    -a data/mac/dev/auto \
-    -f intertext
+python bin/conert_format.py \
+  -p mac-dev \
+  -s data/mac/dev/zh zh \
+  -t data/mac/dev/en en \
+  -a data/mac/dev/auto \
+  -f intertext
 ```
 
 
