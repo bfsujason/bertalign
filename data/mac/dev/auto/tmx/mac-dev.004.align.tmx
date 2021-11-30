@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tmx version="1.4">
-<header creationtool="LingAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
+<header creationtool="BertAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
 <body>
 <tu>
 <tuv xml:lang="zh-CN"><seg>我奶奶刚满十六岁时，就由她的父亲做主，嫁给了高密东北乡有名的财主单廷秀的独生子单扁郎。</seg></tuv>

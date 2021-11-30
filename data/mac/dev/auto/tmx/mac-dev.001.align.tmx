@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tmx version="1.4">
-<header creationtool="LingAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
+<header creationtool="BertAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
 <body>
 <tu>
 <tuv xml:lang="zh-CN"><seg>那天晚上我没走掉。 陈清扬把我拽住，以伟大友谊的名义叫我留下来。</seg></tuv>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tmx version="1.4">
-<header creationtool="LingAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
+<header creationtool="BertAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
 <body>
 <tu>
 <tuv xml:lang="zh-CN"><seg>汪淼驱车沿京密路到密云县，再转至黑龙潭，又走了一段盘山路，便到达中科院国家天文观测中心的射电天文观测基地。</seg></tuv>

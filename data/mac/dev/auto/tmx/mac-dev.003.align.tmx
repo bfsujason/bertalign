@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tmx version="1.4">
-<header creationtool="LingAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
+<header creationtool="BertAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="zh-CN" datatype="plaintext" />
 <body>
 <tu>
 <tuv xml:lang="zh-CN"><seg>却说秦氏因听见宝玉梦中唤他的乳名，心中纳闷，又不好细问。</seg></tuv>
