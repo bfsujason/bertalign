@@ -44,7 +44,7 @@ In order to compare the sentence-based alignments returned by various aligners w
 
 ### Text+Berg
 
-[Text+Berg corpus](./data/text+berg) consists of the yearbooks of Swiss Alpine Club, which are published in both German and French ([Volk et al., 2010](https://aclanthology.org/L10-1069/)). [Sennrich & Volk 2010](https://aclanthology.org/2010.amta-papers.14/) manually aligned 991 German and 1,101 French sentences selected from the corpus and made it [publicly available](https://github.com/rsennrich/Bleualign/tree/master/eval) for evaluation of automatic sentence aligners.
+[Text+Berg corpus](./data/text+berg) consists of the yearbooks of Swiss Alpine Club, which are published in both German and French ([Volk et al., 2010](https://aclanthology.org/L10-1069/)). [Sennrich & Volk (2010)](https://aclanthology.org/2010.amta-papers.14/) manually aligned 991 German and 1,101 French sentences selected from the corpus and made it [publicly available](https://github.com/rsennrich/Bleualign/tree/master/eval) for evaluation of automatic sentence aligners.
 
 ## System Comparisons
 
