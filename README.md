@@ -407,7 +407,7 @@ python utils/sent_splitter.py \
 python utils/sent_splitter.py \
   -i utils/en_raw
   -o utils/en
-  -l zh
+  -l en
 ```
 
 This script uses multilingual sentence splitter [pySBD](https://github.com/nipunsadvilkar/pySBD) to split raw [Chinese](http://www.scio.gov.cn/zfbps/32832/Document/1714274/1714274.htm) and [English](http://www.scio.gov.cn/zfbps/32832/Document/1714277/1714277.htm) texts into sentences. pySBD develops a rule-based algorithm for sentence boundary detection of [23 languages](https://github.com/nipunsadvilkar/pySBD/tree/master/pysbd/lang). You can specify the language using [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) with the parameter *-l*.
