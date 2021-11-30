@@ -1,14 +1,9 @@
 # 2021/11/30
 # bfsujason@163.com
 
-"""
-Usage:
-python -p mac-dev \
-    -s data/mac/dev/zh zh \
-    -t data/mac/dev/en en \
-    -a data/mac/dev/auto \
-    -f intertext
-"""
+# Usage:
+# python -p xi -s ..\data\split\zh zh -t ..\data\split\en en -a ..\data\zh-en -f intertext
+
 import os
 import re
 import shutil
@@ -40,13 +35,12 @@ def main():
         links = read_alignments(os.path.join(args.alignment, file))
         
         if args.format == 'intertext':
-            prj_name = "{}{}{}".format(args.prj, args.src[1], args.tgt[1])
             src_name = "{}_{}".format(file_id, args.src[1])
             tgt_name = "{}_{}".format(file_id, args.tgt[1])
         
-            toDoc = '.'.join([prj_name, tgt_name, 'xml'])
-            fromDoc = '.'.join([prj_name, src_name, 'xml'])
-            linkDoc = '.'.join([prj_name, src_name, tgt_name, 'xml'])
+            toDoc = '.'.join([args.prj, tgt_name, 'xml'])
+            fromDoc = '.'.join([args.prj, src_name, 'xml'])
+            linkDoc = '.'.join([args.prj, src_name, tgt_name, 'xml'])
         
             write_sent_xml(src_lines, out_dir, fromDoc)
             write_sent_xml(tgt_lines, out_dir, toDoc)
