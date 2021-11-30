@@ -102,7 +102,7 @@ def write_sent_xml(lines, dir, doc):
 def write_tmx(src_lines, src_lang, tgt_lines, tgt_lang, links, tmxDoc):
     tmx_head = """<?xml version="1.0" encoding="UTF-8" ?>
 <tmx version="1.4">
-<header creationtool="LingAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="{}" datatype="plaintext" />
+<header creationtool="BertAlign" creationtoolversion="1.0" segtype="sentence" o-tmf="unknown" adminlang="en-US" srclang="{}" datatype="plaintext" />
 <body>""".format(LANG.TMX[src_lang])
     tmx_tail = """</body>
 </tmx>"""
