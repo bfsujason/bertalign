@@ -24,7 +24,7 @@ import numpy as np
 import numba as nb
 
 def main():
-  # user-defined parameters
+  # User-defined parameters.
   parser = argparse.ArgumentParser('Sentence alignment using Bertalign')
   parser.add_argument('-s', '--src', type=str, required=True, help='Source texts directory.')
   parser.add_argument('-t', '--tgt', type=str, required=True, help='Target texts directory.')
