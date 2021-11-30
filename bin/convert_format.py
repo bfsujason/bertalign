@@ -1,9 +1,14 @@
 # 2021/11/30
 # bfsujason@163.com
 
-# Usage:
-# python -p xi -s ..\data\split\zh zh -t ..\data\split\en en -a ..\data\zh-en -f intertext
-
+"""
+Usage:
+python -p MAC-Dev \
+    -s data/mac/dev/zh zh \
+    -t data/mac/dev/en en \
+    -a data/mac/dev/auto \
+    -f intertext
+"""
 import os
 import re
 import shutil
