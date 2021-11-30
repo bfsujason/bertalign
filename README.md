@@ -497,4 +497,4 @@ This script uses multilingual sentence splitter [pySBD](https://github.com/nipun
 
 ## TODO List
 
-Evaluate Bertalign on datasets containing language pairs other than Chinese and English.
+Evaluate Bertalign on datasets containing language pairs .
