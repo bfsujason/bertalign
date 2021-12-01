@@ -19,7 +19,7 @@ pip install sentence-transformers
 Please note that embedding sentences on GPU-enabled machines is much faster than those with CPU only. The following experiments are conducted using [Google Colab](https://colab.research.google.com/) which provides free GPU service.
 
 ## Evaluation Corpora
-Bertalign is language-agnostic thanks to the cross-language embedding model  [sentence-transformers](https://github.com/UKPLab/sentence-transformers).
+Bertalign is language-agnostic thanks to the cross-language embedding models provided by [sentence-transformers](https://github.com/UKPLab/sentence-transformers).
 
 For now, we use two Chinese-English corpora and one German-French corpus to evaluate the performance of Bertalign. Dataset with other language pairs are to be added later.
 
