@@ -55,7 +55,7 @@ def main():
     src_file, tgt_file, out_file = job.split('\t')
     print("Aligning {} to {}".format(src_file, tgt_file))
 
-    # Convert source and target texts into feature matrix.
+    # Convert source and target texts into vectors.
     t_0 = time.time()
     src_lines = open(src_file, 'rt', encoding="utf-8").readlines()
     tgt_lines = open(tgt_file, 'rt', encoding="utf-8").readlines()
@@ -79,10 +79,9 @@ def main():
     first_w, first_path = find_first_search_path(m, n)
     first_pointers = first_pass_align(m, n, first_w,
                                       first_path, first_alignment_types,
-                                      D, I, args.top_k)
-    first_alignment = first_back_track(m, n,
-                                       first_pointers, first_path,
-                                       first_alignment_types)
+                                      D, I)
+    first_alignment = first_back_track(m, n, first_pointers,
+                                       first_path, first_alignment_types)
     print("First-pass alignment takes {:.3f} seconds.".format(time.time() - t_2))
     
     # Find optimal m-to-n alignments using dynamic programming.
@@ -104,6 +103,23 @@ def print_alignments(alignments, out):
     for x, y in alignments:
       f.write("{}:{}\n".format(x, y))
 
+def second_back_track(i, j, pointers, search_path, a_types):
+  alignment = []
+  while ( 1 ):
+    j_offset = j - search_path[i][0]
+    a = pointers[i][j_offset]
+    s = a_types[a][0]
+    t = a_types[a][1]
+    src_range = [i - offset - 1 for offset in range(s)][::-1]
+    tgt_range = [j - offset - 1 for offset in range(t)][::-1]
+    alignment.append((src_range, tgt_range))
+
+    i = i-s
+    j = j-t
+    
+    if i == 0 and j == 0:
+        return alignment[::-1]
+
 @nb.jit(nopython=True, fastmath=True, cache=True)
 def second_pass_align(src_vecs,
                       tgt_vecs,
@@ -116,29 +132,26 @@ def second_pass_align(src_vecs,
                       skip,
                       margin=False):
   """
-  Perform the second-pass alignment to extract n-m bitext segments.
+  Perform the second-pass alignment to extract m-n bitext segments.
   Args:
       src_vecs: numpy array of shape (max_align-1, num_src_sents, embedding_size).
-      tgt_vecs: numpy array of shape (max_align-1, num_tgt_sents, embedding_size)
+      tgt_vecs: numpy array of shape (max_align-1, num_tgt_sents, embedding_size).
       src_lens: numpy array of shape (max_align-1, num_src_sents).
       tgt_lens: numpy array of shape (max_align-1, num_tgt_sents).
       w: int. Predefined window size for the second-pass alignment.
       search_path: numpy array. Second-pass alignment search path.
       align_types: numpy array. Second-pass alignment types.
-      char_ratio: float. Ratio between source length to target length.
+      char_ratio: float. Source to target length ratio.
       skip: float. Cost for instertion and deletion.
-      margin: boolean. Set to true if choosing modified cosine similarity score.
+      margin: boolean. True if choosing modified cosine similarity score.
   Returns:
       pointers: numpy array recording best alignments for each DP cell.
   """
+  # Intialize cost and backpointer matrix
   src_len = src_vecs.shape[1]
   tgt_len = tgt_vecs.shape[1]
-
-  # Intialize cost and backpointer matrix
   cost = np.zeros((src_len + 1, w))
-  back = np.zeros((src_len + 1, w), dtype=nb.int64)
-  cost[0][0] = 0
-  back[0][0] = -1
+  pointers = np.zeros((src_len + 1, w), dtype=nb.int64)
   
   for i in range(1, src_len + 1):
     i_start = search_path[i][0]
@@ -168,20 +181,14 @@ def second_pass_align(src_vecs,
         if a_1 == 0 or a_2 == 0:  # deletion or insertion
           cur_score = skip
         else:
-          src_v = src_vecs[a_1-1,i-1,:]
-          tgt_v = tgt_vecs[a_2-1,j-1,:]
-          src_l = src_lens[a_1-1, i-1]
-          tgt_l = tgt_lens[a_2-1, j-1]
-          cur_score = get_score(src_v, tgt_v,
-                                a_1, a_2, i, j,
-                                src_vecs, tgt_vecs,
-                                src_len, tgt_len,
-                                margin=margin)
-          tgt_l = tgt_l * char_ratio
-          min_len = min(src_l, tgt_l)
-          max_len = max(src_l, tgt_l)
-          len_p = np.log2(1 + min_len / max_len)
-          cur_score *= len_p
+          cur_score = calculate_similarity_score(src_vecs,
+                                                 tgt_vecs,
+                                                 i, j, a_1, a_2, 
+                                                 src_len, tgt_len,
+                                                 margin=margin)
+          len_penalty = calculate_length_penalty(src_lens, tgt_lens, i, j,
+                                                 a_1, a_2, char_ratio)
+          cur_score *= len_penalty
         
         score += cur_score
         if score > best_score:
@@ -190,68 +197,96 @@ def second_pass_align(src_vecs,
 
       j_offset = j - i_start
       cost[i][j_offset] = best_score
-      back[i][j_offset] = best_a
+      pointers[i][j_offset] = best_a
       
-  return back
-
-def second_back_track(i, j, b, search_path, a_types):
-  alignment = []
-  #while ( i !=0 and j != 0 ):
-  while ( 1 ):
-    j_offset = j - search_path[i][0]
-    a = b[i][j_offset]
-    s = a_types[a][0]
-    t = a_types[a][1]
-    src_range = [i - offset - 1 for offset in range(s)][::-1]
-    tgt_range = [j - offset - 1 for offset in range(t)][::-1]
-    alignment.append((src_range, tgt_range))
-
-    i = i-s
-    j = j-t
-    
-    if i == 0 and j == 0:
-        return alignment[::-1]
+  return pointers
 
 @nb.jit(nopython=True, fastmath=True, cache=True)
-def get_score(src_v, tgt_v,
-              a_1, a_2,
-              i, j,
-              src_vecs, tgt_vecs,
-              src_len, tgt_len,
-              margin=False):
+def calculate_similarity_score(src_vecs,
+                               tgt_vecs,
+                               src_idx,
+                               tgt_idx,
+                               src_overlap,
+                               tgt_overlap,
+                               src_len,
+                               tgt_len,
+                               margin=False):
+  
+  """
+  Calulate the semantics-based similarity score of bitext segment.
+  """
+  src_v = src_vecs[src_overlap - 1, src_idx - 1, :]
+  tgt_v = tgt_vecs[tgt_overlap - 1, tgt_idx - 1, :]
   similarity = nb_dot(src_v, tgt_v)
   if margin:
-    tgt_neighbor_ave_sim = get_neighbor_sim(src_v, a_2, j, tgt_len, tgt_vecs)
-    src_neighbor_ave_sim = get_neighbor_sim(tgt_v, a_1, i, src_len, src_vecs)
-    neighbor_ave_sim = (tgt_neighbor_ave_sim + src_neighbor_ave_sim)/2
+    tgt_neighbor_ave_sim = calculate_neighbor_similarity(src_v, 
+                                                         tgt_overlap,
+                                                         tgt_idx,
+                                                         tgt_len,
+                                                         tgt_vecs)
+    
+    src_neighbor_ave_sim = calculate_neighbor_similarity(tgt_v,
+                                                         src_overlap,
+                                                         src_idx,
+                                                         src_len,
+                                                         src_vecs)
+    
+    neighbor_ave_sim = (tgt_neighbor_ave_sim + src_neighbor_ave_sim) / 2
     similarity -= neighbor_ave_sim
 
   return similarity
 
 @nb.jit(nopython=True, fastmath=True, cache=True)
-def get_neighbor_sim(vec, a, j, len, db):
-  left_idx = j - a
-  right_idx = j + 1
+def calculate_neighbor_similarity(vec, overlap, sent_idx, sent_len, db):
+  left_idx = sent_idx - overlap
+  right_idx = sent_idx + 1
     
-  if right_idx > len:
-    neighbor_right_sim = 0
-  else:
-    right_embed = db[0,right_idx-1,:]
+  if right_idx <= sent_len:
+    right_embed = db[0, right_idx - 1, :]
     neighbor_right_sim = nb_dot(vec, right_embed)
-    
-  if left_idx == 0:
-    neighbor_left_sim = 0
   else:
-    left_embed = db[0,left_idx-1,:]
+    neighbor_right_sim = 0
+ 
+  if left_idx > 0:
+    left_embed = db[0, left_idx - 1, :]
     neighbor_left_sim = nb_dot(vec, left_embed)
-
-  #if right_idx > LEN or left_idx < 0:
-  if right_idx > len or left_idx == 0:
-    neighbor_ave_sim = neighbor_left_sim + neighbor_right_sim
   else:
-    neighbor_ave_sim = (neighbor_left_sim + neighbor_right_sim) / 2
+    neighbor_left_sim = 0
+    
+  neighbor_ave_sim = neighbor_left_sim + neighbor_right_sim
+  if neighbor_right_sim and neighbor_left_sim:
+    neighbor_ave_sim /= 2
     
   return neighbor_ave_sim
+
+@nb.jit(nopython=True, fastmath=True, cache=True)
+def calculate_length_penalty(src_lens,
+                             tgt_lens,
+                             src_idx,
+                             tgt_idx,
+                             src_overlap,
+                             tgt_overlap,
+                             char_ratio):
+  """
+  Calculate the length-based similarity score of bitext segment.
+  Args:
+      src_lens: numpy array. Source sentence lengths vector.
+      tgt_lens: numpy array. Target sentence lengths vector.
+      src_idx: int. Source sentence index.
+      tgt_idx: int. Target sentence index.
+      src_overlap: int. Number of sentences in source segment.
+      tgt_overlap: int. Number of sentences in target segment.
+      char_ratio: float. Source to target sentence length ratio.
+  Returns:
+      length_penalty: float. Similarity score based on length differences.
+  """
+  src_l = src_lens[src_overlap - 1, src_idx - 1]
+  tgt_l = tgt_lens[tgt_overlap - 1, tgt_idx - 1]
+  tgt_l = tgt_l * char_ratio
+  min_len = min(src_l, tgt_l)
+  max_len = max(src_l, tgt_l)
+  length_penalty = np.log2(1 + min_len / max_len)
+  return length_penalty
 
 @nb.jit(nopython=True, fastmath=True, cache=True)
 def nb_dot(x, y):
@@ -259,7 +294,7 @@ def nb_dot(x, y):
 
 def find_second_path(align, w, src_len, tgt_len):
   '''
-  Convert 1-1 alignment from first-pass to the path for second-pass alignment.
+  Convert 1-1 first-pass alignment to the second-round path.
   The indices along X-axis and Y-axis must be consecutive.
   Args:
       align: list of tuples. First-pass alignment results.
@@ -267,7 +302,7 @@ def find_second_path(align, w, src_len, tgt_len):
       src_len: int. Number of source sentences.
       tgt_len: int. Number of target sentences.
   Returns:
-      path: numpy array for the second search path.
+      path: numpy array. Search path for the second-round alignment.
   '''
   last_bead_src = align[-1][0]
   last_bead_tgt = align[-1][1]
@@ -296,22 +331,22 @@ def find_second_path(align, w, src_len, tgt_len):
   
   return max_w + 1, np.array(path)
 
-def first_back_track(i, j, b, search_path, a_types):
+def first_back_track(i, j, pointers, search_path, a_types):
   """
   Retrieve 1-1 alignments from the first-pass DP table.
   Args:
       i: int. Number of source sentences.
       j: int. Number of target sentences.
+      pointers: numpy array. Backpointer matrix of first-pass alignment.
       search_path: numpy array. First-pass search path.
       a_types: numpy array. First-pass alignment types.
   Returns:
       alignment: list of tuples for 1-1 alignments.
   """
   alignment = []
-  #while ( i !=0  and j != 0 ):
   while ( 1 ):
     j_offset = j - search_path[i][0]
-    a = b[i][j_offset]
+    a = pointers[i][j_offset]
     s = a_types[a][0]
     t = a_types[a][1]
     if a == 2: # best 1-1 alignment
@@ -330,10 +365,10 @@ def first_pass_align(src_len,
                      search_path,
                      align_types,
                      dist,
-                     index,
-                     top_k):
+                     index
+                     ):
   """
-  Perform the first-pass alignment to extract 1-1 bitext segments.
+  Perform the first-pass alignment to extract only 1-1 bitext segments.
   Args:
       src_len: int. Number of source sentences.
       tgt_len: int. Number of target sentences.
@@ -342,15 +377,14 @@ def first_pass_align(src_len,
       align_types: numpy array. Alignment types for the first-pass alignment.
       dist: numpy array. Distance matrix for top-k similar vecs.
       index: numpy array. Index matrix for top-k similar vecs.
-      top_k: int. Number of most similar top-k vecs.
   Returns:
       pointers: numpy array recording best alignments for each DP cell.
   """
   # Initialize cost and backpointer matrix.
   cost = np.zeros((src_len + 1, 2 * w + 1))
   pointers = np.zeros((src_len + 1, 2 * w + 1), dtype=nb.int64)
-  cost[0][0] = 0
-  pointers[0][0] = -1
+  
+  top_k = index.shape[1]
 
   for i in range(1, src_len +  1):
     i_start = search_path[i][0]
@@ -405,8 +439,8 @@ def find_first_search_path(src_len,
       win_size: int. Window size along the diagonal of the DP table.
       search_path: numpy array of shape (src_len + 1, 2), containing the start
                    and end index of target sentences for each source sentence.
-                   One extra row is added in the search_path for calculation of
-                   deletions and omissions.
+                   One extra row is added in the search_path for the calculation
+                   of deletions and omissions.
   """
   win_size = max(min_win_size, int(max(src_len, tgt_len) * percent))
   search_path = []
@@ -460,16 +494,16 @@ def find_top_k_sents(src_vecs, tgt_vecs, k=3):
 
 def doc2feats(sent2line, line_embeddings, lines, num_overlaps):
   """
-  Convert texts into feature matrix.
+  Convert texts into vectors.
   Args:
       sent2line: dict. Map each sentence to its ID.
       line_embeddings: numpy array of sentence embeddings.
-      lines: list of sentences.
+      lines: list. A list of sentences.
       num_overlaps: int. Maximum number of overlapping sentences allowed.
   Returns:
-      vecs0: numpy array of shape (num_overlaps, num_lines, size_embedding)
+      vecs0: numpy array of shape (num_overlaps, num_lines, embedding_size)
              for overlapping sentence embeddings.
-      vecs1: numpy array of shape (num_overlap, num_lines)
+      vecs1: numpy array of shape (num_overlaps, num_lines)
              for overlapping sentence lengths.
   """
   lines = [preprocess_line(line) for line in lines]
@@ -495,12 +529,19 @@ def doc2feats(sent2line, line_embeddings, lines, num_overlaps):
 def layer(lines, num_overlaps, comb=' '):
   """
   Make front-padded overlapping sentences.
+  Args:
+      lines: list. A list of sentences.
+      num_overlaps: int. Number of overlapping sentences.
+      comb: str. Symbol for sentence concatenation.
+  Returns:
+      out: list. Front-padded overlapping sentences.
+                 Similar to n-grams for sentences.
   """
   if num_overlaps < 1:
     raise Exception('num_overlaps must be >= 1')
   out = ['PAD', ] * min(num_overlaps - 1, len(lines))
-  for ii in range(len(lines) - num_overlaps + 1):
-    out.append(comb.join(lines[ii:ii + num_overlaps]))    
+  for i in range(len(lines) - num_overlaps + 1):
+    out.append(comb.join(lines[i:i + num_overlaps]))    
   return out
 
 def preprocess_line(line):
@@ -534,7 +575,7 @@ def read_in_embeddings(text_file, embed_file):
 
 def create_jobs(meta_data_file, src_dir, tgt_dir, alignment_dir):
   """
-  Creat a job list consisting of source, target and alignment file paths.
+  Create a job list of source, target and alignment file paths.
   """
   jobs = []
   text_ids = get_text_ids(meta_data_file)
@@ -551,7 +592,7 @@ def get_text_ids(meta_data_file):
   Args:
       meta_data_file: str. TSV file with the first column being text ID.
   Returns:
-      text_ids: list.
+      text_ids: list. A list of text IDs.
   """
   text_ids = []
   with open(meta_data_file, 'rt', encoding='utf-8') as f:
