@@ -24,8 +24,6 @@ Alignment between 25 languages: Catalan (ca), Chinese (zh), Czech (cs), Danish (
 
 Please see [requirements.txt](./requirements.txt) for installation information. If you are running Bertalign on *GPU-enabled Linux* such as Google Colaboratory, please install *faiss-gpu* for faster processing.
 
----
-
 ##### Basic example
 
 Just import *Bertalign* and initialize it with the source and target text, which will detect the source and target language automatically and split both texts into sentences. Then invoke the method *align_sents()*  to align sentences and print out the result with *print_sents()*.
@@ -242,8 +240,6 @@ log_final_scores(scores)
 
 Bertalign is released under the [GNU General Public License v3.0](./LICENCE)
 
----
-
 ##### Credits
 
 ###### Main Libraries
@@ -261,8 +257,6 @@ Bertalign is released under the [GNU General Public License v3.0](./LICENCE)
 * [Bleualign](https://github.com/rsennrich/Bleualign)
 
 * [Vecalign](https://github.com/thompsonb/vecalign)
-
----
 
 ##### Todo List
 
