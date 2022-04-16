@@ -14,7 +14,7 @@ According to our experiments, Bertalign achieves more accurate results on [Text+
 
 ## Languges Supported
 
-Alignment between 25 languages: Catalan (ca), Chinese (zh), Czech (cs), Danish (da), Dutch (nl), English(en), Finnish (fi), French (fr), German (de), Greek (el), Hungarian (hu), Icelandic (is), Italian (it), Lithuanian (lt), Latvain (lv), Norwegian (no), Polish (pl), Portuguese (pt), Romanian (ro), Russian (ru), Slovak (sk), Slovenian (sl), Spanish (es), Swedish (sv), and Trukish (tr).
+Alignment between 25 languages: Catalan (ca), Chinese (zh), Czech (cs), Danish (da), Dutch (nl), English(en), Finnish (fi), French (fr), German (de), Greek (el), Hungarian (hu), Icelandic (is), Italian (it), Lithuanian (lt), Latvain (lv), Norwegian (no), Polish (pl), Portuguese (pt), Romanian (ro), Russian (ru), Slovak (sk), Slovenian (sl), Spanish (es), Swedish (sv), and Turkish (tr).
 
 ## Installation
 
