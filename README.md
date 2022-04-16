@@ -1,30 +1,26 @@
-### Bertalign
+# Bertalign
 
 An automatic mulitlingual sentence aligner.
 
 Bertalign is designed to facilitate the construction of multilingual parallel corpora and translation memories, which have a wide range of applications in translation-related research such as corpus-based translation studies, contrastive linguistics, computer-assisted translation, translator education and machine translation.
 
----
-
-#### Approach
+## Approach
 
 Bertalign uses [sentence-transformers](https://github.com/UKPLab/sentence-transformers) to represent source and target sentences so that semantically similar sentences in different languages are mapped onto similar vector spaces. Then a two-step algorithm based on dynamic programming is performed: 1) Step 1 finds the 1-1 alignments for approximate anchor points; 2) Step 2 limits the search path to the anchor points and extracts all the valid alignments with 1-many, many-1 or many-to-many relations between the source and target sentences.
 
-#### Performance
+## Performance
 
 According to our experiments, Bertalign achieves more accurate results on [Text+Berg](./text+berg), a publicly available German-French parallel corpus, than the traditional length-, dictionary-, or MT-based alignment methods as reported in [Thompson & Koehn (2019)](https://aclanthology.org/D19-1136/)
 
-#### Languges Supported
+## Languges Supported
 
 Alignment between 25 languages: Catalan (ca), Chinese (zh), Czech (cs), Danish (da), Dutch (nl), English(en), Finnish (fi), French (fr), German (de), Greek (el), Hungarian (hu), Icelandic (is), Italian (it), Lithuanian (lt), Latvain (lv), Norwegian (no), Polish (pl), Portuguese (pt), Romanian (ro), Russian (ru), Slovak (sk), Slovenian (sl), Spanish (es), Swedish (sv), and Trukish (tr).
 
----
-
-#### Installation
+## Installation
 
 Please see [requirements.txt](./requirements.txt) for installation information. If you are running Bertalign on *GPU-enabled Linux* such as Google Colaboratory, please install *faiss-gpu* for faster processing.
 
-#### Basic example
+## Basic example
 
 Just import *Bertalign* and initialize it with the source and target text, which will detect the source and target language automatically and split both texts into sentences. Then invoke the method *align_sents()*  to align sentences and print out the result with *print_sents()*.
 
@@ -128,9 +124,7 @@ aligner.print_sents()
     叶文洁看过他写的文章，文笔很好，其中有一种与这个粗放环境很不协调的纤细和敏感，令她很难忘。
     Ye remembered reading his articles, which were written in a beautiful style, sensitive and fine, ill suited to the rough-hewn environment.
 
----
-
-#### Example with more options
+## Example with more options
 
 The following example shows how to use Bertalign to align the Text+Berg corpus, and evaluate its performance with gold standard alignments. The evaluation script [eval.py](./bertalign/eval.py) is based on [Vecalign](https://github.com/thompsonb/vecalign).
 
@@ -234,13 +228,11 @@ log_final_scores(scores)
     | F1          |   0.936 |   0.989 |
      ---------------------------------
 
----
-
-#### Licence
+## Licence
 
 Bertalign is released under the [GNU General Public License v3.0](./LICENCE)
 
-#### Credits
+## Credits
 
 ##### Main Libraries
 
@@ -258,7 +250,7 @@ Bertalign is released under the [GNU General Public License v3.0](./LICENCE)
 
 * [Vecalign](https://github.com/thompsonb/vecalign)
 
-#### Todo List
+## Todo List
 
 - Try the [CNN model](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3) for sentence embeddings
 * Develop a GUI for Windows users
