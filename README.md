@@ -120,10 +120,10 @@ aligner.print_sents()
     Suddenly, she saw another hand lightly stroking the matching surface of the stump a few feet away. The tremors in that hand revealed a heart that resonated with hers.
     
     那手虽然很白皙，但能够看出是属于男性的。
-    Though the hand was pale, she could tell it belonged to a man. She looked up.
+    Though the hand was pale, she could tell it belonged to a man.
     
     叶文洁抬头，看到抚摸树桩的人是白沐霖，一个戴眼镜的瘦弱青年，他是兵团《大生产报》的记者，前天刚到连队来采访。
-    It was Bai Mulin. A slender, delicate man who wore glasses, he was a reporter for the Great Production News, the corps’ newspaper. He had arrived the day before yesterday to gather news about her company.
+    She looked up. It was Bai Mulin. A slender, delicate man who wore glasses, he was a reporter for the Great Production News, the corps’ newspaper. He had arrived the day before yesterday to gather news about her company.
     
     叶文洁看过他写的文章，文笔很好，其中有一种与这个粗放环境很不协调的纤细和敏感，令她很难忘。
     Ye remembered reading his articles, which were written in a beautiful style, sensitive and fine, ill suited to the rough-hewn environment.
