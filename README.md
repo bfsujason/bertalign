@@ -18,7 +18,9 @@ Alignment between 25 languages: Catalan (ca), Chinese (zh), Czech (cs), Danish (
 
 ## Installation
 
-Please see [requirements.txt](./requirements.txt) for installation information. If you are running Bertalign on *GPU-enabled Linux* such as Google Colaboratory, please install *faiss-gpu* for faster processing.
+Please see [requirements.txt](./requirements.txt) for installation information. 
+
+### Run Bertalign directly in a [Google Colab notebook](https://colab.research.google.com/drive/123GhXwgwmQp1F5SVZ74_uIgyxo6hLRq0?usp=sharing)
 
 ## Basic example
 
