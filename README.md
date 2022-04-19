@@ -18,9 +18,9 @@ Alignment between 25 languages: Catalan (ca), Chinese (zh), Czech (cs), Danish (
 
 ## Installation
 
-Please see [requirements.txt](./requirements.txt) for installation information. 
+Please see [requirements.txt](./requirements.txt) for installation. 
 
-### Install Bertalign and run the examples directly in a [Google Colab notebook](https://colab.research.google.com/drive/123GhXwgwmQp1F5SVZ74_uIgyxo6hLRq0?usp=sharing)
+### You can also install Bertalign and run the examples directly in a [Google Colab notebook](https://colab.research.google.com/drive/123GhXwgwmQp1F5SVZ74_uIgyxo6hLRq0?usp=sharing).
 
 ## Basic example
 
