@@ -15,7 +15,7 @@ def clean_text(text):
     
 def detect_lang(text):
     translator = Translator(service_urls=[
-      'translate.google.cn',
+      'translate.google.com.hk',
     ])
     max_len = 200
     chunk = text[0 : min(max_len, len(text))]
