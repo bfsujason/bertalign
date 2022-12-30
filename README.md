@@ -230,6 +230,10 @@ log_final_scores(scores)
     | F1          |   0.936 |   0.989 |
      ---------------------------------
 
+## Citation
+
+Lei Liu, Min Zhu, Bertalign: Improved word embedding-based sentence alignment for Chinese–English parallel corpora of literary texts, Digital Scholarship in the Humanities, 2022. [https://doi.org/10.1093/llc/fqac089](https://doi.org/10.1093/llc/fqac089)
+
 ## Licence
 
 Bertalign is released under the [GNU General Public License v3.0](./LICENCE)
