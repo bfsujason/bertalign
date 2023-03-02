@@ -3,4 +3,4 @@ numba==0.51.2
 faiss-gpu==1.7.2
 googletrans==4.0.0rc1
 sentence-splitter==1.4
-sentence-transformers==2.2.0
+sentence-transformers==2.2.2
