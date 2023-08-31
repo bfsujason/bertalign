@@ -1,52 +1,64 @@
 import numpy as np
 
+
 from bertalign import model
 from bertalign.corelib import *
 from bertalign.utils import *
 
 class Bertalign:
     def __init__(self,
-                 src,
-                 tgt,
+                 src_raw,
+                 tgt_raw,
                  max_align=5,
                  top_k=3,
                  win=5,
                  skip=-0.1,
                  margin=True,
                  len_penalty=True,
-                 is_split=False,
+                 input_type='raw',
+                 src_lang='de',
+                 tgt_lang='fr',
                ):
-        
+
         self.max_align = max_align
         self.top_k = top_k
         self.win = win
         self.skip = skip
         self.margin = margin
         self.len_penalty = len_penalty
-        
-        src = clean_text(src)
-        tgt = clean_text(tgt)
-        src_lang = detect_lang(src)
-        tgt_lang = detect_lang(tgt)
-        
-        if is_split:
+
+        if not src_lang:
+            src_lang = detect_lang(src)
+        if not tgt_lang:
+            tgt_lang = detect_lang(tgt)
+
+        if input_type == 'lines':
+            # need to split
+            src = clean_text(src_raw)
+            tgt = clean_text(tgt_raw)
             src_sents = src.splitlines()
             tgt_sents = tgt.splitlines()
-        else:
+        elif input_type == 'raw':
+            src = clean_text(src_raw)
+            tgt = clean_text(tgt_raw)
             src_sents = split_sents(src, src_lang)
             tgt_sents = split_sents(tgt, tgt_lang)
- 
+        elif input_type == 'tokenized':
+            src_sents = src_raw
+            tgt_sents = tgt_raw
+
         src_num = len(src_sents)
         tgt_num = len(tgt_sents)
-        
+
         src_lang = LANG.ISO[src_lang]
         tgt_lang = LANG.ISO[tgt_lang]
-        
+
         print("Source language: {}, Number of sentences: {}".format(src_lang, src_num))
         print("Target language: {}, Number of sentences: {}".format(tgt_lang, tgt_num))
 
-        print("Embedding source and target text using {} ...".format(model.model_name))
+        print("Embedding source text using {} ...".format(model.model_name))
         src_vecs, src_lens = model.transform(src_sents, max_align - 1)
+        print("Embedding target text using {} ...".format(model.model_name))
         tgt_vecs, tgt_lens = model.transform(tgt_sents, max_align - 1)
 
         char_ratio = np.sum(src_lens[0,]) / np.sum(tgt_lens[0,])
