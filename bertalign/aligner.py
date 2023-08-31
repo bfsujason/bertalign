@@ -16,8 +16,8 @@ class Bertalign:
                  margin=True,
                  len_penalty=True,
                  input_type='raw',
-                 src_lang='de',
-                 tgt_lang='fr',
+                 src_lang=None,
+                 tgt_lang=None,
                ):
 
         self.max_align = max_align
@@ -31,6 +31,10 @@ class Bertalign:
             src_lang = detect_lang(src)
         if not tgt_lang:
             tgt_lang = detect_lang(tgt)
+
+        input_types = ['raw', 'newline', 'tokenized']
+        if input_type not in input_types:
+            raise ValueError("Invalid input type. Expected one of: %s" % input_types)
 
         if input_type == 'lines':
             # need to split
@@ -74,7 +78,7 @@ class Bertalign:
         self.char_ratio = char_ratio
         self.src_vecs = src_vecs
         self.tgt_vecs = tgt_vecs
-        
+
     def align_sents(self):
 
         print("Performing first-step alignment ...")
@@ -83,7 +87,7 @@ class Bertalign:
         first_w, first_path = find_first_search_path(self.src_num, self.tgt_num)
         first_pointers = first_pass_align(self.src_num, self.tgt_num, first_w, first_path, first_alignment_types, D, I)
         first_alignment = first_back_track(self.src_num, self.tgt_num, first_pointers, first_path, first_alignment_types)
-        
+
         print("Performing second-step alignment ...")
         second_alignment_types = get_alignment_types(self.max_align)
         second_w, second_path = find_second_search_path(first_alignment, self.win, self.src_num, self.tgt_num)
@@ -91,10 +95,10 @@ class Bertalign:
                                             second_w, second_path, second_alignment_types,
                                             self.char_ratio, self.skip, margin=self.margin, len_penalty=self.len_penalty)
         second_alignment = second_back_track(self.src_num, self.tgt_num, second_pointers, second_path, second_alignment_types)
-        
+
         print("Finished! Successfully aligning {} {} sentences to {} {} sentences\n".format(self.src_num, self.src_lang, self.tgt_num, self.tgt_lang))
         self.result = second_alignment
-    
+
     def print_sents(self):
         for bead in (self.result):
             src_line = self._get_line(bead[0], self.src_sents)
