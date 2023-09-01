@@ -31,25 +31,46 @@ class Bertalign:
         if input_type not in input_types:
             raise ValueError("Invalid input type '%s'. Expected one of: %s" % (input_type, input_types))
 
-        if not src_lang:
-            src_lang = detect_lang(src)
-        if not tgt_lang:
-            tgt_lang = detect_lang(tgt)
-
         if input_type == 'lines':
             # need to split
             src = clean_text(src_raw)
             tgt = clean_text(tgt_raw)
             src_sents = src.splitlines()
             tgt_sents = tgt.splitlines()
+
+            if not src_lang:
+                src_lang = detect_lang(src)
+            if not tgt_lang:
+                tgt_lang = detect_lang(tgt)
+
+
         elif input_type == 'raw':
             src = clean_text(src_raw)
             tgt = clean_text(tgt_raw)
+
+            if not src_lang:
+                src_lang = detect_lang(src)
+            if not tgt_lang:
+                tgt_lang = detect_lang(tgt)
+
             src_sents = split_sents(src, src_lang)
             tgt_sents = split_sents(tgt, tgt_lang)
+
         elif input_type == 'tokenized':
+
+            if not src_lang:
+                src_lang = detect_lang(src)
+            if not tgt_lang:
+                tgt_lang = detect_lang(tgt)
+
             src_sents = src_raw
             tgt_sents = tgt_raw
+
+            if not src_lang:
+                src_lang = detect_lang(' '.join(src_sents))
+            if not tgt_lang:
+                tgt_lang = detect_lang(' '.join(tgt_sents))
+
 
         src_num = len(src_sents)
         tgt_num = len(tgt_sents)
