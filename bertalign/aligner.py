@@ -27,14 +27,14 @@ class Bertalign:
         self.margin = margin
         self.len_penalty = len_penalty
 
+        input_types = ['raw', 'lines', 'tokenized']
+        if input_type not in input_types:
+            raise ValueError("Invalid input type '%s'. Expected one of: %s" % (input_type, input_types))
+
         if not src_lang:
             src_lang = detect_lang(src)
         if not tgt_lang:
             tgt_lang = detect_lang(tgt)
-
-        input_types = ['raw', 'newline', 'tokenized']
-        if input_type not in input_types:
-            raise ValueError("Invalid input type. Expected one of: %s" % input_types)
 
         if input_type == 'lines':
             # need to split
