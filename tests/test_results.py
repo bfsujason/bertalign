@@ -18,9 +18,9 @@ def align_text_and_berg(filespec, aligner_spec):
 
     for test_data in filespec:
 
-        file, src_file, tgt_file, gold_dir  = test_data
-        src = open(src_file, 'rt', encoding='utf-8').read()
-        tgt = open(tgt_file, 'rt', encoding='utf-8').read()
+        file, src_file, tgt_file, gold_dir = test_data
+        src = open(src_file, "rt", encoding="utf-8").read()
+        tgt = open(tgt_file, "rt", encoding="utf-8").read()
 
         print("Start aligning {} to {}".format(src_file, tgt_file))
         # aligner = Bertalign(src, tgt, is_split=True)
@@ -51,10 +51,19 @@ def test_aligner_original(text_and_berg_expected_results, text_and_berg_inputs):
             assert expected[metric] == calculated[metric], "Result mismatch"
 
 
-def test_aligner_altered_parametrization(text_and_berg_expected_results, text_and_berg_inputs):
+aligner_spec_explicit = {
+    "input_type": "lines",
+    "src_lang": "de",
+    "tgt_lang": "fr",
+}
+
+
+@pytest.mark.parametrize("aligner_spec", [aligner_spec_explicit])
+def test_aligner_altered_parametrization(
+    text_and_berg_expected_results, text_and_berg_inputs, aligner_spec
+):
     r"""Test results for the aligner using input_type and languages."""
 
-    aligner_spec = {"input_type": 'lines', 'src_lang': 'de', 'tgt_lang': 'fr'}
     result = align_text_and_berg(text_and_berg_inputs, aligner_spec)
 
     for file in result:
