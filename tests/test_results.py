@@ -58,6 +58,11 @@ aligner_spec_explicit = {
 }
 
 
+aligner_spec_detect = {
+    "input_type": "lines",
+}
+
+# @pytest.mark.parametrize("aligner_spec", [aligner_spec_detect])
 @pytest.mark.parametrize("aligner_spec", [aligner_spec_explicit])
 def test_aligner_altered_parametrization(
     text_and_berg_expected_results, text_and_berg_inputs, aligner_spec
