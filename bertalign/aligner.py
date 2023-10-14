@@ -23,7 +23,11 @@ class Bertalign:
         self.skip = skip
         self.margin = margin
         self.len_penalty = len_penalty
-        
+                   
+        src = src.replace("。」", "%。")
+        src = src.replace("！」", "#。")
+        src = src.replace("？」", "&。")
+                   
         src = clean_text(src)
         tgt = clean_text(tgt)
         src_lang = detect_lang(src)
@@ -86,9 +90,22 @@ class Bertalign:
     def print_sents(self):
         for bead in (self.result):
             src_line = self._get_line(bead[0], self.src_sents)
+            src_line = src_line.replace("%。", "。」")
+            src_line = src_line.replace("#。", "！」")
+            src_line = src_line.replace("&。", "？」")
             tgt_line = self._get_line(bead[1], self.tgt_sents)
             print(src_line + "\n" + tgt_line + "\n")
 
+        def write_sents_to_file(self, output_file):
+        with open(output_file, 'w', encoding='utf-8') as file:
+            for bead in self.result:
+                src_line = self._get_line(bead[0], self.src_sents)
+                src_line = src_line.replace("%。", "。」")
+                src_line = src_line.replace("#。", "！」")
+                src_line = src_line.replace("&。", "？」")
+                tgt_line = self._get_line(bead[1], self.tgt_sents)
+                file.write(src_line + "\n" + tgt_line + "\n")
+                
     @staticmethod
     def _get_line(bead, lines):
         line = ''
