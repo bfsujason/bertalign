@@ -96,7 +96,7 @@ class Bertalign:
             tgt_line = self._get_line(bead[1], self.tgt_sents)
             print(src_line + "\n" + tgt_line + "\n")
 
-        def write_sents_to_file(self, output_file):
+    def write_sents_to_file(self, output_file):
         with open(output_file, 'w', encoding='utf-8') as file:
             for bead in self.result:
                 src_line = self._get_line(bead[0], self.src_sents)
