@@ -21,5 +21,5 @@ Dharma brings goodness to all. My only concern is,  why do people not positively
 aligner = Bertalign(src, tgt)
 aligner.align_sents()
 
-output_file = "alignment_result.txt"
+output_file = "alignment_result"
 aligner.write_sents_to_file(output_file)
