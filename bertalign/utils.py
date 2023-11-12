@@ -12,7 +12,7 @@ def clean_text(text):
             line = re.sub('\s+', ' ', line)
             clean_text.append(line)
     return "\n".join(clean_text)
-    
+
 def detect_lang(text):
     translator = Translator(service_urls=[
       'translate.google.com.hk',

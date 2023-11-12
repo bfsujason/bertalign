@@ -1,25 +1,34 @@
 # -*- coding: utf-8 -*-
 
+
 from bertalign import Bertalign
 src = """
-事实上，与其你担心妄语，你可以正语啊。
-因为那位信徒是开布店，有人要买布了，就会问他：「布多少钱一尺？」「五块钱。」「褪色不褪色？」为了要能卖出去，他只有说谎：「不褪色。」
-后来我告诉他，你不要这样说，你可以说：「五块钱的会褪色，另外有个八块钱的不褪色。」
-后来这位信徒盖了大楼，就是因为他的诚信，不妄语，让他生意兴隆。我只是觉得奇怪，这么好的佛法，为什么不把它作为积极的解说，让信徒受到佛法的利益呢？
+去年報載華視連續劇《包青天》受到觀眾熱烈歡迎，弟子們說：「師父就像是佛光山的包青天，常常及時伸出正義的援手，專門為大家排難解紛。」<br/>
+設身處地\u3000謀求大家滿意<br/>
+人間佛教<br/>
+回憶自我懂事以來，就經常看到母親為鄰里親友排難解紛，記得曾經有人向他說：「何必多管閒事呢？」
+母親聽了，正色答道：「排難解紛能促進別人的和諧美滿，是正事，怎麼能說是閒事呢？」
+及至行腳台灣，先是落腳在佛寺中，搬柴、運水、拉車、採購……無所不做。<br/>
+在耳濡目染下，我也繼承了母親的性格，一直都很喜歡幫助別人化解紛爭，而且並不一定是佛光山的徒眾，我才特意關懷照顧！<br/>
 """
 
 tgt = """
-Instead of worrying about lying, one can choose to practice  Right Speech. Once there was a Buddhist who owned a textile store,  and when customers wanted to buy a piece of cloth, they would ask,  “How much for a foot of fabric?”
-“Five dollars.”
-“Does the color fade?”
-To sell the cloth, he would lie and say, “No, it doesn’t.” Later, I told him not to respond that way. 
-Instead, I suggested  that he could say, “The five-dollar fabric fades easily, but the eight dollar one does not.” 
-Due to the honorable reputation he gained from  being honest, his business boomed, which allowed him to build an  establishment. 
-Dharma brings goodness to all. My only concern is,  why do people not positively explain Buddhism so devotees can  receive the benefit of the Dharma?
+A TV drama series depicting the life of Pao Ch’ing-t’ien (also known as Pao Cheng) was the most watched television show in Taiwan several years ago. 
+Put Ourselves in Other People’s Places and Act on Their Behalf.
+Humanistic Buddhism.
+My disciples have often said about me, “Master is the Pao Ch’ing-t’ien of Fo Guang Shan because whenever there is a dispute, he promptly lends a hand and settles it justly.”  
+I inherited my mother’s character. 
+As far as I can remember, she served as mediator for quarreling neighbors and relatives. 
+Someone once asked her, “Why must you meddle in others’ affairs?” 
+“To settle conflicts,” my mother sternly replied, “is no trifling matter; it is a serious business because it promotes harmony and happiness in people’s lives.” 
+Imbued with what I often saw, I have always taken great pleasure helping settle disputes. 
+When later my wanderings in search of Buddhist teaching took me as far away as Taiwan, I first settled in a monastery, where I carried firewood, hauled water, pulled carts, made purchases, and patrolled the mountainscape night and day.
+Nor are my care and concern limited to the disciples and followers of Fo Guang Shan. 
 """
 
 aligner = Bertalign(src, tgt)
 aligner.align_sents()
+aligner.print_sents()
 
-output_file = "alignment_result"
-aligner.write_sents_to_file(output_file)
+#output_file = "alignment_result.txt"  # 生成文件名,附带后缀，一般是txt，例“佛教概论.txt”
+#aligner.write_sents_to_file(output_file)
