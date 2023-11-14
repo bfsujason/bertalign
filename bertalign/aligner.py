@@ -37,6 +37,12 @@ class Bertalign:
         src = src.replace("！<br/>", "_。")
         src = src.replace("<br/>", "+。")
 
+        tgt = tgt.replace(".<br/>", "#.")
+        tgt = tgt.replace("?<br/>", "$.")
+        tgt = tgt.replace("?”<br/>", "%.")
+        tgt = tgt.replace(".”<br/>", "&.")
+        tgt = tgt.replace("<br/>", "+.")
+
         src = clean_text(src)
         tgt = clean_text(tgt)
         src_lang = detect_lang(src)
@@ -115,7 +121,16 @@ class Bertalign:
                 # If it does, wrap the entire line in <h2> tags
                 src_line = f"<h2>{src_line}</h2>"
             src_line = src_line.replace("+。", "")
+
             tgt_line = self._get_line(bead[1], self.tgt_sents)
+            tgt_line = tgt_line.replace("#.", ".")
+            tgt_line = tgt_line.replace("$.", "?")
+            tgt_line = tgt_line.replace("%.", "?”")
+            tgt_line = tgt_line.replace("&.", ".”")
+            if "+." in tgt_line:
+                # If it does, wrap the entire line in <h2> tags
+                tgt_line = f"<h2>{tgt_line}</h2>"
+            tgt_line = tgt_line.replace("+.", "")
             print(src_line + "\n" + tgt_line + "\n")
 
     def write_sents_to_file(self, output_file):
@@ -133,7 +148,16 @@ class Bertalign:
                     # If it does, wrap the entire line in <h2> tags
                     src_line = f"<h2>{src_line}</h2>"
                 src_line = src_line.replace("+。", "")
+
                 tgt_line = self._get_line(bead[1], self.tgt_sents)
+                tgt_line = tgt_line.replace("#.", ".")
+                tgt_line = tgt_line.replace("$.", "?")
+                tgt_line = tgt_line.replace("%.", "?”")
+                tgt_line = tgt_line.replace("&.", ".”")
+                if "+." in tgt_line:
+                    # If it does, wrap the entire line in <h2> tags
+                    tgt_line = f"<h2>{tgt_line}</h2>"
+                tgt_line = tgt_line.replace("+.", "")
                 file.write(src_line + "\n" + tgt_line + "\n")
 
     @staticmethod

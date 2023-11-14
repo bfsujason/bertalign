@@ -9,20 +9,21 @@ src = """
 回憶自我懂事以來，就經常看到母親為鄰里親友排難解紛，記得曾經有人向他說：「何必多管閒事呢？」
 母親聽了，正色答道：「排難解紛能促進別人的和諧美滿，是正事，怎麼能說是閒事呢？」
 及至行腳台灣，先是落腳在佛寺中，搬柴、運水、拉車、採購……無所不做。<br/>
-在耳濡目染下，我也繼承了母親的性格，一直都很喜歡幫助別人化解紛爭，而且並不一定是佛光山的徒眾，我才特意關懷照顧！<br/>
+在耳濡目染下，我也繼承了太虛法師的性格，一直都很喜歡幫助別人化解紛爭，而且並不一定是佛光山的徒眾，我才特意關懷照顧！<br/>
 """
 
 tgt = """
-A TV drama series depicting the life of Pao Ch’ing-t’ien (also known as Pao Cheng) was the most watched television show in Taiwan several years ago. 
-Put Ourselves in Other People’s Places and Act on Their Behalf.
-Humanistic Buddhism.
+A TV drama series depicting the life of Pao Ch’ing-t’ien (also known as Pao Cheng) was the most watched television show in Taiwan several years ago.<br/>
+Put Ourselves in Other People’s Places and Act on Their Behalf<br/>
+Humanistic Buddhism<br/>
 My disciples have often said about me, “Master is the Pao Ch’ing-t’ien of Fo Guang Shan because whenever there is a dispute, he promptly lends a hand and settles it justly.”  
-I inherited my mother’s character. 
+I inherited my mother’s character?<br/>
 As far as I can remember, she served as mediator for quarreling neighbors and relatives. 
-Someone once asked her, “Why must you meddle in others’ affairs?” 
-“To settle conflicts,” my mother sternly replied, “is no trifling matter; it is a serious business because it promotes harmony and happiness in people’s lives.” 
-Imbued with what I often saw, I have always taken great pleasure helping settle disputes. 
+Someone once asked her, “Why must you meddle in others’ affairs?”<br/>
+“To settle conflicts,” my mother sternly replied, “is no trifling matter; it is a serious business because it promotes harmony and happiness in people’s lives.”<br/> 
+Imbued with what I often saw, I have always taken great pleasure helping settle disputes.<br/> 
 When later my wanderings in search of Buddhist teaching took me as far away as Taiwan, I first settled in a monastery, where I carried firewood, hauled water, pulled carts, made purchases, and patrolled the mountainscape night and day.
+I have also inherited the character of Ven. Taixu, and I have always liked to help others resolve disputes.<br/>
 Nor are my care and concern limited to the disciples and followers of Fo Guang Shan. 
 """
 
