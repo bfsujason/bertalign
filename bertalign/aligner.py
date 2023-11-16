@@ -116,10 +116,8 @@ class Bertalign:
             src_line = src_line.replace("%。", "。」")
             src_line = src_line.replace("#。", "！」")
             src_line = src_line.replace("&。", "？」")
-            # Check if the src_line contains "+。"
             if "+。" in src_line:
-                # If it does, wrap the entire line in <h2> tags
-                src_line = f"<h2>{src_line}</h2>"
+                src_line = f"<h4>{src_line}</h4>"
             src_line = src_line.replace("+。", "")
 
             tgt_line = self._get_line(bead[1], self.tgt_sents)
@@ -128,8 +126,7 @@ class Bertalign:
             tgt_line = tgt_line.replace("%.", "?”")
             tgt_line = tgt_line.replace("&.", ".”")
             if "+." in tgt_line:
-                # If it does, wrap the entire line in <h2> tags
-                tgt_line = f"<h2>{tgt_line}</h2>"
+                tgt_line = f"<h4>{tgt_line}</h4>"
             tgt_line = tgt_line.replace("+.", "")
             print(src_line + "\n" + tgt_line + "\n")
 
@@ -143,10 +140,8 @@ class Bertalign:
                 src_line = src_line.replace("%。", "。」")
                 src_line = src_line.replace("#。", "！」")
                 src_line = src_line.replace("&。", "？」")
-                # Check if the src_line contains "+。"
                 if "+。" in src_line:
-                    # If it does, wrap the entire line in <h2> tags
-                    src_line = f"<h2>{src_line}</h2>"
+                    src_line = f"<h4>{src_line}</h4>"
                 src_line = src_line.replace("+。", "")
 
                 tgt_line = self._get_line(bead[1], self.tgt_sents)
@@ -155,8 +150,7 @@ class Bertalign:
                 tgt_line = tgt_line.replace("%.", "?”")
                 tgt_line = tgt_line.replace("&.", ".”")
                 if "+." in tgt_line:
-                    # If it does, wrap the entire line in <h2> tags
-                    tgt_line = f"<h2>{tgt_line}</h2>"
+                    tgt_line = f"<h4>{tgt_line}</h4>"
                 tgt_line = tgt_line.replace("+.", "")
                 file.write(src_line + "\n" + tgt_line + "\n")
 
