@@ -1,52 +1,89 @@
 import numpy as np
 
+
 from bertalign import model
 from bertalign.corelib import *
 from bertalign.utils import *
 
 class Bertalign:
     def __init__(self,
-                 src,
-                 tgt,
+                 src_raw,
+                 tgt_raw,
                  max_align=5,
                  top_k=3,
                  win=5,
                  skip=-0.1,
                  margin=True,
                  len_penalty=True,
-                 is_split=False,
+                 input_type='raw',
+                 src_lang=None,
+                 tgt_lang=None,
                ):
-        
+
         self.max_align = max_align
         self.top_k = top_k
         self.win = win
         self.skip = skip
         self.margin = margin
         self.len_penalty = len_penalty
-        
-        src = clean_text(src)
-        tgt = clean_text(tgt)
-        src_lang = detect_lang(src)
-        tgt_lang = detect_lang(tgt)
-        
-        if is_split:
+
+        input_types = ['raw', 'lines', 'tokenized']
+        if input_type not in input_types:
+            raise ValueError("Invalid input type '%s'. Expected one of: %s" % (input_type, input_types))
+
+        if input_type == 'lines':
+            # need to split
+            src = clean_text(src_raw)
+            tgt = clean_text(tgt_raw)
             src_sents = src.splitlines()
             tgt_sents = tgt.splitlines()
-        else:
+
+            if not src_lang:
+                src_lang = detect_lang(src)
+            if not tgt_lang:
+                tgt_lang = detect_lang(tgt)
+
+
+        elif input_type == 'raw':
+            src = clean_text(src_raw)
+            tgt = clean_text(tgt_raw)
+
+            if not src_lang:
+                src_lang = detect_lang(src)
+            if not tgt_lang:
+                tgt_lang = detect_lang(tgt)
+
             src_sents = split_sents(src, src_lang)
             tgt_sents = split_sents(tgt, tgt_lang)
- 
+
+        elif input_type == 'tokenized':
+
+            if not src_lang:
+                src_lang = detect_lang(src)
+            if not tgt_lang:
+                tgt_lang = detect_lang(tgt)
+
+            src_sents = src_raw
+            tgt_sents = tgt_raw
+
+            if not src_lang:
+                src_lang = detect_lang(' '.join(src_sents))
+            if not tgt_lang:
+                tgt_lang = detect_lang(' '.join(tgt_sents))
+
+
         src_num = len(src_sents)
         tgt_num = len(tgt_sents)
-        
+
         src_lang = LANG.ISO[src_lang]
         tgt_lang = LANG.ISO[tgt_lang]
-        
+
         print("Source language: {}, Number of sentences: {}".format(src_lang, src_num))
         print("Target language: {}, Number of sentences: {}".format(tgt_lang, tgt_num))
 
-        print("Embedding source and target text using {} ...".format(model.model_name))
+        print("Embedding source text using {} ...".format(model.model_name))
         src_vecs, src_lens = model.transform(src_sents, max_align - 1)
+        print("Embedding target text using {} ...".format(model.model_name))
         tgt_vecs, tgt_lens = model.transform(tgt_sents, max_align - 1)
 
         char_ratio = np.sum(src_lens[0,]) / np.sum(tgt_lens[0,])
@@ -62,7 +99,7 @@ class Bertalign:
         self.char_ratio = char_ratio
         self.src_vecs = src_vecs
         self.tgt_vecs = tgt_vecs
-        
+
     def align_sents(self):
 
         print("Performing first-step alignment ...")
@@ -71,7 +108,7 @@ class Bertalign:
         first_w, first_path = find_first_search_path(self.src_num, self.tgt_num)
         first_pointers = first_pass_align(self.src_num, self.tgt_num, first_w, first_path, first_alignment_types, D, I)
         first_alignment = first_back_track(self.src_num, self.tgt_num, first_pointers, first_path, first_alignment_types)
-        
+
         print("Performing second-step alignment ...")
         second_alignment_types = get_alignment_types(self.max_align)
         second_w, second_path = find_second_search_path(first_alignment, self.win, self.src_num, self.tgt_num)
@@ -79,10 +116,10 @@ class Bertalign:
                                             second_w, second_path, second_alignment_types,
                                             self.char_ratio, self.skip, margin=self.margin, len_penalty=self.len_penalty)
         second_alignment = second_back_track(self.src_num, self.tgt_num, second_pointers, second_path, second_alignment_types)
-        
+
         print("Finished! Successfully aligning {} {} sentences to {} {} sentences\n".format(self.src_num, self.src_lang, self.tgt_num, self.tgt_lang))
         self.result = second_alignment
-    
+
     def print_sents(self):
         for bead in (self.result):
             src_line = self._get_line(bead[0], self.src_sents)
