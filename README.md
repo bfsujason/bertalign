@@ -236,7 +236,7 @@ Lei Liu & Min Zhu. 2022. Bertalign: Improved word embedding-based sentence align
 
 ## Funding
 
-The work is supported by the MOE Foundation of Humanities and Social Sciences (Grant No. 17YJC740055).
+The work is supported by the Social Science Development Research Project of Hebei Province (Grant No. 20230104006).
 
 ## Licence
 
